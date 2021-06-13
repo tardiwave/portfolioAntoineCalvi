@@ -1,0 +1,22 @@
+{
+    "name": "antoinetardivel/template-app-php",
+    "authors": [
+        {
+            "name": "antoinetardivel",
+            "email": "tardivelantoine@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    },
+    "require": {
+        "altorouter/altorouter": "^2.0",
+        "vlucas/valitron": "1.4.5"
+    },
+    "autoload": {
+        "files": ["utils/Helpers/Functions.php"],
+        "psr-4": {
+            "App\\": "utils/"
+        }
+    }
+}
