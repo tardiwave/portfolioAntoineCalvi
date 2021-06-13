@@ -4,13 +4,14 @@ This project was bootstrapped by [Antoine Tardivel](https://www.antoinetardivel.
 
 ## ⚡️ Préparer l'app en local
 
-* Executer `composer update`
-* Executer `composer dump-autoload`
+* Execute `composer update`
+* Execute `composer dump-autoload`
+* Use bdd.sql to create tables in the database
 
 ## ⚡️ Lancer l'app en local 
 
 * Change the connection informations in Connection.php in /utils/
-* Executer `php -S localhost:8000 -t .\public\` in root file
+* Execute `php -S localhost:8000 -t .\public\` in root file
 
 ## 💨 Publier l'app
 
