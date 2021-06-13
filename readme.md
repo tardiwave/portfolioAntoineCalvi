@@ -2,6 +2,11 @@
 
 This project was bootstrapped by [Antoine Tardivel](https://www.antoinetardivel.com/).
 
+## ⚡️ Préparer l'app en local
+
+`composer update`
+`composer dump-autoload`
+
 ## ⚡️ Lancer l'app en local 
 
 * Change the connection informations in Connection.php in /utils/
