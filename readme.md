@@ -4,8 +4,8 @@ This project was bootstrapped by [Antoine Tardivel](https://www.antoinetardivel.
 
 ## ⚡️ Préparer l'app en local
 
-`composer update`
-`composer dump-autoload`
+* Executer `composer update`
+* Executer `composer dump-autoload`
 
 ## ⚡️ Lancer l'app en local 
 
