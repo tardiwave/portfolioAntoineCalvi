@@ -4,7 +4,7 @@ This project was bootstrapped by [Antoine Tardivel](https://www.antoinetardivel.
 
 ## ⚡️ Préparer l'app en local
 
-* Execute `composer update`
+* Execute `composer install`
 * Execute `composer dump-autoload`
 * Use bdd.sql to create tables in the database
 

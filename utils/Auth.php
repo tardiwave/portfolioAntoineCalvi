@@ -21,8 +21,7 @@ class Auth {
             header('Location: ' . $router->url('login') . '?forbidden=true');
             exit();
         }else{
-            echo 'connecté';
+            // echo 'connecté';
         }
     }
-
 }

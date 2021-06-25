@@ -15,11 +15,14 @@ class Router {
 
     public $layout = "layout";
 
+    private $currentPage = null;
+
     public function __construct(string $viewPath, string $appName)
     {
         $this->viewPath = $viewPath;
         $this->appName = $appName;
         $this->router = new \AltoRouter();
+        $this->currentPage = $currentPage;
     }
 
     public function get(string $url, string $view, ?string $name = null)

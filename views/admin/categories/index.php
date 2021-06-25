@@ -25,22 +25,22 @@ $link = $router->url('adminCategories');
         echo 'Création réussie';
     }
 ?>
-<div>
-    <a href="<?= $router->url('adminCreateCategory');  ?>">
+
+<div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Administration catégories</h1>
+    <a href="<?= $router->url('adminCreateCategory');  ?>" class="btn btn-primary my-1" style="height: fit-content;">
         Ajouter catégorie
     </a>
 </div>
 
-
-
-<h1>Administration catégories</h1>
-
-<table>
+<table class="table">
     <thead>
-        <th>Id</th>
-        <th>Titre</th>
-        <th>Date</th>
-        <th>Actions</th>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+        </tr>
     </thead>
     <tbody>
         <?php foreach($categories as $category): ?>
@@ -59,12 +59,12 @@ $link = $router->url('adminCategories');
                 </a>
             </td>
             <td>
-                <a href="<?= $router->url('adminEditCategory', ['id' => e($category->getId())]);  ?>">
+                <a href="<?= $router->url('adminEditCategory', ['id' => e($category->getId())]);  ?>" class="btn btn-primary m-1">
                     Éditer
                 </a>
                 <form method="POST" action="<?= $router->url('adminDeleteCategory', ['id' => e($category->getId())]); ?>" style="display: inline;"
                     onSubmit="return confirm('Voulez-vous vraiment effectuer cette action?')">
-                    <button type="submit">
+                    <button type="submit" class="btn btn-danger m-1">
                         Supprimer
                     </button>
                 </form>
@@ -74,6 +74,6 @@ $link = $router->url('adminCategories');
     </tbody>
 </table>
 
-<h2>Pagination</h2>
-<?= $queryPagination->previousLink($link) ?>
-<?= $queryPagination->nextLink($link) ?>
+<div class="d-flex justify-content-center">
+    <?= $queryPagination->getPagination($link) ?>
+</div>

@@ -48,5 +48,3 @@ if(!empty($errors)){
 $button = 'Modifier catégorie';
 require('_form.php');
 ?>
-
-<a href="<?= $router->url('adminEditCategory', ['id' => e($category->getId())]); ?>">reset</a>

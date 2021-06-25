@@ -19,6 +19,16 @@ class Post {
 
     private $categories = [];
 
+    private $image;
+
+    private $imageExtension;
+
+    private $oldImage;
+
+    private $oldImageExtension;
+
+    private $pendingUpload;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -112,6 +122,117 @@ class Post {
     public function addCategory(Category $category): void 
     {
         $this->categories[] = $category;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+    public function getImageArr(): array
+    {
+        $imageArr = explode(",", $this->image);
+        if(strlen($this->image) === 0){
+            return [];
+        }else{
+            return $imageArr;
+        }
+    }
+    public function getImageStr(): string
+    {
+        return $this->image;
+    }
+    public function removeImage($imageToDelete): string
+    {
+        $images = $this->getImageArr();
+        foreach($images as $key => $image){
+            if($image === $imageToDelete){
+                unset($images[$key]);
+            }
+        }
+        $this->image = implode(',',$images);
+        return $this->image;
+    }
+    public function getImageStrWE(): array
+    {
+        $images = [];
+        foreach($this->getImageStr() as $image){
+            $images[] = 'large_' . $image;
+            // $image = $image . '_' . $size . '.' . $this->imageExtension;
+        }
+        return $images;
+    }
+
+    // public function getImagesWE(string $size): ?string
+    // {
+    //     $result = $this->image . '_' . $size . '.' . $this->imageExtension;
+    //     return $result;
+    // }
+
+    // public function setImage($image): self
+    // {
+    //     if(!empty($this->image)){
+    //         $this->oldImage = $this->image;
+    //         $this->oldImageExtension = $this->imageExtension;
+    //     }
+    //     $this->pendingUpload = true;
+    //     if(is_array($image) && !empty($image['tmp_name'])){
+    //         $this->image = $image;
+    //     }
+    //     if(is_string($image) && !empty($image)){
+    //         $this->image = $image;
+    //     }
+    //     return $this;
+    // }
+
+    public function setImage($image): self
+    {
+        if(is_string($image) && !empty($image)){
+            if(!empty($this->image) && $this->image != ""){
+                $this->image = $this->image . ',' .$image;
+            }else{
+                $this->image = $image;
+            }
+        }
+        return $this;
+    }
+    public function setAllImages($image): self
+    {
+        if(is_string($image) && !empty($image)){
+            $this->image = $image;
+        }
+        return $this;
+    }
+    public function setImageStr($image): self
+    {
+        if(is_string($image) && !empty($image)){
+            $this->images = explode(",", $image);
+        }
+        return $this;
+    }
+    public function setImageExtension($imageExtension): self
+    {
+        $this->imageExtension = $imageExtension;
+        return $this;
+    }
+
+    public function getImageExtension(): ?string
+    {
+        return $this->imageExtension;
+    }
+
+    // public function getOldImage(): ?string
+    // {
+    //     return $this->oldImage;
+    // }
+
+    // public function getOldImageExtension(): ?string
+    // {
+    //     return $this->oldImageExtension;
+    // }
+
+    public function shouldUpload(): bool
+    {
+        return $this->pendingUpload;
     }
 
 }

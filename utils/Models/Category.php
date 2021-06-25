@@ -30,7 +30,7 @@ class Category {
 
     public function getName(): ?string 
     {
-        return e($this->name);
+        return $this->name;
     }
 
     public function setName(string $name): self
@@ -41,7 +41,7 @@ class Category {
 
     public function getSlug(): ?string 
     {
-        return e($this->slug);
+        return $this->slug;
     }
 
     public function setSlug(string $slug): self
@@ -52,7 +52,7 @@ class Category {
 
     public function getSDesc(): ?string 
     {
-        return e((string)($this->shortDescription));
+        return (string)($this->shortDescription);
     }
 
     public function setSDesc(string $shortDescription): self 
@@ -74,7 +74,7 @@ class Category {
 
     public function getPostId(): ?int 
     {
-        return e($this->postId);
+        return $this->postId;
     }
 
 }

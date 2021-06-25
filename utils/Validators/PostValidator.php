@@ -12,11 +12,12 @@ class PostValidator extends AbstractValidator{
         Validator::lang('fr');
         parent::__construct($data);
         $this->validator->rule('required', ['name', 'slug']);
-        $this->validator->rule('lengthBetween', ['name', 'slug'], 3, 200);
+        $this->validator->rule('lengthBetween', ['name', 'slug'], 5, 200);
         $this->validator->rule('slug', 'slug');
         $this->validator->rule(function($field, $value) use ($table, $postId){
             return !$table->exist($field, $value, $postId);
         }, 'slug', 'Ce slug est déjà utilisé.');
+        $this->validator->rule('image', 'image');
         $this->validator->rule('subset', 'categories_ids', array_keys($categoriesIds));
     }
 
