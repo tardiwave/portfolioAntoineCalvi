@@ -1,4 +1,4 @@
 <?php
 function e (?string $string) {
-    return htmlspecialchars($string);
+    return htmlentities($string);
 }

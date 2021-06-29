@@ -8,8 +8,9 @@ class ObjectHelper {
     {
         foreach($fields as $field){
             $method = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $field)));
-            $object->$method(e($data[$field]));
+            $object->$method($data[$field]);
         }
+
     }
 
 }

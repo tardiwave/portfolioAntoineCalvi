@@ -24,55 +24,57 @@ $link = $router->url('adminPosts');
         echo 'Création réussie';
     }
 ?>
-<div>
-    <a href="<?= $router->url('adminCreatePost');  ?>">
+
+
+
+<div class="d-flex flex-wrap justify-content-between align-items-center">
+    <h1>Administration posts</h1>
+    <a href="<?= $router->url('adminCreatePost');  ?>" class="btn btn-primary my-1" style="height: fit-content;">
         Ajouter post
     </a>
 </div>
 
-
-
-<h1>Administration posts</h1>
-
-<table>
+<table class="table">
     <thead>
-        <th>Id</th>
-        <th>Titre</th>
-        <th>Date</th>
-        <th>Actions</th>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Date</th>
+            <th scope="col">Actions</th>
+        </tr>
     </thead>
     <tbody>
         <?php foreach($posts as $post): ?>
-        <tr>
-            <td>
-                #<?= e($post->getId()) ?>
-            </td>
-            <td>
-                <a href="<?= $router->url('post', ['slug' => e($post->getSlug()), 'id' => e($post->getId())]);  ?>">
-                    <?= e($post->getName()) ?>
-                </a>
-            </td>
-            <td>
-                <a href="<?= $router->url('post', ['slug' => e($post->getSlug()), 'id' => e($post->getId())]);  ?>">
-                    <?= e($post->getDate()->format('d/m/Y')) ?>
-                </a>
-            </td>
-            <td>
-                <a href="<?= $router->url('adminEditPost', ['id' => e($post->getId())]);  ?>">
-                    Éditer
-                </a>
-                <form method="POST" action="<?= $router->url('adminDeletePost', ['id' => e($post->getId())]); ?>" style="display: inline;"
-                    onSubmit="return confirm('Voulez-vous vraiment effectuer cette action?')">
-                    <button type="submit">
-                        Supprimer
-                    </button>
-                </form>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    #<?= e($post->getId()) ?>
+                </td>
+                <td>
+                    <a href="<?= $router->url('post', ['slug' => e($post->getSlug()), 'id' => e($post->getId())]);  ?>">
+                        <?= e($post->getName()) ?>
+                    </a>
+                </td>
+                <td>
+                    <a href="<?= $router->url('post', ['slug' => e($post->getSlug()), 'id' => e($post->getId())]);  ?>">
+                        <?= e($post->getDate()->format('d/m/Y')) ?>
+                    </a>
+                </td>
+                <td class="d-flex flex-wrap justify-content-center">
+                    <a href="<?= $router->url('adminEditPost', ['id' => e($post->getId())]);  ?>" class="btn btn-primary m-1">
+                        Éditer
+                    </a>
+                    <form method="POST" action="<?= $router->url('adminDeletePost', ['id' => e($post->getId())]); ?>" style="display: inline;"
+                        onSubmit="return confirm('Voulez-vous vraiment effectuer cette action?')">
+                        <button type="submit" class="btn btn-danger m-1">
+                            Supprimer
+                        </button>
+                    </form>
+                </td>
+            </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 
-<h2>Pagination</h2>
-<?= $queryPagination->previousLink($link) ?>
-<?= $queryPagination->nextLink($link) ?>
+<div class="d-flex justify-content-center">
+    <?= $queryPagination->getPagination($link) ?>
+</div>

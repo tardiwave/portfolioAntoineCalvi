@@ -32,12 +32,28 @@ class Form {
         }
         return <<<HTML
         <div>
-            <div>
-                <label for="field{$key}">{$label}</label>
-                <input type="{$type}" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" required>
-                <span title="required">*</span>
+            <div class="mb-3">
+                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
+                <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" required>
+                {$this->getinvalidFeedback($key)}
             </div>
-            {$this->getinvalidFeedback($key)}
+        </div>
+HTML;
+    }
+
+    public function file(string $key, string $label): string
+    {
+        $inputClass = '';
+        if(isset($this->errors[$key])){
+            $inputClass .= ' is-invalid';
+        }
+        return <<<HTML
+        <div class="w-100">
+            <div class="mb-3 w-100">
+                <label for="fieldimage" class="form-label">{$label}<span title="required">*</span></label>
+                <input type="file" class="form-control w-100" id="field{$key}" class="{$this->inputClass($key)}" name="image" enctype="multipart/form-data">
+                {$this->getinvalidFeedback($key)}
+            </div>
         </div>
 HTML;
     }
@@ -47,12 +63,11 @@ HTML;
         $value = $this->getValue($key);
         return <<<HTML
         <div>
-            <div>
-                <label for="field{$key}">{$label}</label>
-                <textarea type="text" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" required>{$value}</textarea>
-                <span title="required">*</span>
+            <div class="mb-3">
+                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
+                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" required>{$value}</textarea>
+                {$this->getinvalidFeedback($key)}
             </div>
-            {$this->getinvalidFeedback($key)}
         </div>
 HTML;
     }
@@ -68,14 +83,13 @@ HTML;
         $optionsHTML = implode('', $optionsHTML);
         return <<<HTML
         <div>
-            <div>
-                <label for="field{$key}">{$label}</label>
-                <select type="text" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}[]" multiple>
+            <div class="mb-3">
+                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
+                <select type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}[]" multiple>
                     {$optionsHTML}
                 </select>
-                <span title="required">*</span>
+                {$this->getinvalidFeedback($key)}
             </div>
-            {$this->getinvalidFeedback($key)}
         </div>
 HTML;
     }
@@ -101,15 +115,23 @@ HTML;
         }
         return $inputClass;
     }
+
     private function getinvalidFeedback(string $key): string
     {
         if(isset($this->errors[$key])){
             if(is_array($this->errors[$key])){
-                $error = implode('<br>', $this->errors[$key]);
+                $allErrors = $this->errors[$key];
+                $upFChar = function($value)
+                {
+                    $value = ucfirst(ltrim($value));
+                    return $value;
+                };
+                $allErrors = array_map($upFChar, $allErrors);
+                $error = implode('<br>', $allErrors);
             }else {
                 $error = $this->errors[$key];
             }
-            return '<div>' . $error . '</div>';
+            return "<div class='form-text text-danger'>" . $error . "</div>";
         }
         return '';
     }

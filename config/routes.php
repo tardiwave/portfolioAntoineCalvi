@@ -21,6 +21,8 @@
     $router->match('/admin/posts/create', 'admin/posts/create', 'adminCreatePost');
     $router->match('/admin/posts/edit/[i:id]', 'admin/posts/edit', 'adminEditPost');
     $router->post('/admin/posts/delete/[i:id]', 'admin/posts/delete', 'adminDeletePost');
+    $router->post('/admin/posts/edit/[i:id]/delete-image/[*:image1]-[*:image2]-[*:ext]', 'admin/posts/deleteImage', 'adminDeletePostImage');
+    $router->post('/admin/posts/edit/[i:id]/order-image/[*:image1]-[*:image2]-[*:ext]/[*:action]', 'admin/posts/orderImage', 'adminOrderPostImage');
 
     $router->get('/admin/categories', 'admin/categories/index', 'adminCategories');
     $router->match('/admin/categories/create', 'admin/categories/create', 'adminCreateCategory');

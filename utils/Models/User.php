@@ -10,6 +10,8 @@ class User {
 
     private $password;
 
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;

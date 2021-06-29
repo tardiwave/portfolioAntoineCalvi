@@ -8,6 +8,7 @@ use App\Table\PostTable;
 use App\Table\CategoryTable;
 use App\HTML\Form;
 use App\Validators\PostValidator;
+use App\Attachment\PostAttachment;
 use App\ObjectHelper;
 use App\Models\Post;
 use App\Auth;
@@ -16,7 +17,7 @@ Auth::checkAuthorization($router);
 $success = false;
 $pdo = Connection::getPDO();
 $errors = [];
-$fields = ['name', 'content', 'slug', 'date'];
+$fields = ['name', 'slug', 'date'];
 $post = new Post();
 $categoryTable = new CategoryTable($pdo);
 $categories = $categoryTable->list();
@@ -25,15 +26,15 @@ $post->setDate(date('Y-m-d H:i:s'));
 if(!empty($_POST)){
 
     $postTable = new PostTable($pdo);
-    $v = new PostValidator($_POST, $postTable, $post->getId(), $categories);
-    ObjectHelper::hydrate($post, $_POST, $fields);
+    $data = array_merge($_POST, $_FILES);
+    $v = new PostValidator($data, $postTable, $post->getId(), $categories);
+    ObjectHelper::hydrate($post, $data, $fields);
     if($v->validate()){
         $pdo->beginTransaction();
             $id = $postTable->create([
                 'name' => $post->getName(),
                 'slug' => $post->getSlug(),
-                'content' => $post->getContent(),
-                'createdAt' => $post->getDate()->format('Y-m-d H:i:s')
+                'createdAt' => $post->getDate()->format('Y-m-d H:i:s'),
             ]);
             if(isset($_POST["categories_ids"])){
                 $postTable->attachCategories($id, $_POST["categories_ids"]);
@@ -60,5 +61,5 @@ if(!empty($errors)){
 
 <?php 
 $button = 'Créer Post';
-require('_form.php');
+require('_createFrom.php');
 ?>

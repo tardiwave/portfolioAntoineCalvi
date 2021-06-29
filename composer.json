@@ -7,11 +7,12 @@
         }
     ],
     "require-dev": {
-        "symfony/var-dumper": "^5.2"
+        "symfony/var-dumper": "^4.2"
     },
     "require": {
-        "altorouter/altorouter": "^2.0",
-        "vlucas/valitron": "1.4.5"
+        "altorouter/altorouter": "^1.2",
+        "vlucas/valitron": "1.4.5",
+        "intervention/image": "^2.5"
     },
     "autoload": {
         "files": ["utils/Helpers/Functions.php"],

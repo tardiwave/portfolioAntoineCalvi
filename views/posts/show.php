@@ -35,6 +35,11 @@
 
 <p><?= $post->getContent() ?></p>
 
+<?php foreach($post->getImageArr() as $image): ?>
+    <img src="/uploads/posts/large_<?= $image ?>" alt="" style="width: 1200px;">
+<?php endforeach; ?>
+
+
 <h2>Categories :</h2>
 <?php if($postNumber < 1):?>
     <p>Le post ne contient pas de catégories.</p>
