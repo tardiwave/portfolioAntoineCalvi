@@ -77,7 +77,7 @@ class Router {
             header('Location: ' . $router->url('404'));
             // $pageContent = ob_get_clean();
         }
-        require "../layouts/{$this->layout}.php";
+        require "../src/layouts/{$this->layout}.php";
             
             return $this;
         }

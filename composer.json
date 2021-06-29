@@ -15,9 +15,9 @@
         "intervention/image": "^2.5"
     },
     "autoload": {
-        "files": ["utils/Helpers/Functions.php"],
+        "files": ["src/utils/Helpers/Functions.php"],
         "psr-4": {
-            "App\\": "utils/"
+            "App\\": "src/utils/"
         }
     }
 }

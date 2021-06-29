@@ -24,7 +24,7 @@ $link = $router->url('posts');
 
 ?>
 <?php foreach($posts as $post):
-    require '../components/card.php';
+    require '../src/components/card.php';
 endforeach; 
 ?>
 
