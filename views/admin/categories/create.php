@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Créer catégorie - Admin";
 $pageDescription = "Ajouter une catégorie à votre blog.";
 

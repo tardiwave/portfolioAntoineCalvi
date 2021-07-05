@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Éditer categorie - Admin";
 $pageDescription = "Éditer une categorie de votre blog.";
 

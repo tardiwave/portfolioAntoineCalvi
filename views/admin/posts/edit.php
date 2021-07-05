@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Éditer post - Admin";
 $pageDescription = "Éditer un post de votre blog.";
 

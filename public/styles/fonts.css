@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Monument';
+    src: url('/assets/fonts/MonumentExtended-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Monument';
+    src: url('/assets/fonts/MonumentExtended-Ultrabold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica-Light.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica-LightOblique.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica-Oblique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('/assets/fonts/Helvetica-BoldOblique.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}

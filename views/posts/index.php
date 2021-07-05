@@ -1,4 +1,5 @@
 <?php
+$router->template = "templateMain";
 $pageTitle = "Posts";
 $pageDescription = "L'ensemble des posts";
 
@@ -24,7 +25,7 @@ $link = $router->url('posts');
 
 ?>
 <?php foreach($posts as $post):
-    require '../src/components/card.php';
+    require '../src/components/Card.php';
 endforeach; 
 ?>
 

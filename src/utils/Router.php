@@ -13,16 +13,25 @@ class Router {
      */
     private $router;
 
-    public $layout = "layout";
+    public $template = "templateMain";
 
     private $currentPage = null;
 
-    public function __construct(string $viewPath, string $appName)
+    private $componentsPath = null;
+
+    private $layoutPath = null;
+
+    private $templatesPath = null;
+
+    public function __construct(string $viewPath, string $appName, string $componentsPath, string $layoutPath, string $templatesPath)
     {
         $this->viewPath = $viewPath;
         $this->appName = $appName;
         $this->router = new \AltoRouter();
         $this->currentPage = $currentPage;
+        $this->componentsPath = $componentsPath;
+        $this->layoutPath = $layoutPath;
+        $this->templatesPath = $templatesPath;
     }
 
     public function get(string $url, string $view, ?string $name = null)
@@ -51,6 +60,9 @@ class Router {
 
     public function run()
     {
+        $templatesPath = $this->templatesPath;
+        $componentsPath = $this->componentsPath;
+        $layoutPath = $this->layoutPath;
         $appName = $this->appName;
         $match = $this->router->match();
         $router = $this;
@@ -77,7 +89,7 @@ class Router {
             header('Location: ' . $router->url('404'));
             // $pageContent = ob_get_clean();
         }
-        require "../src/layouts/{$this->layout}.php";
+        require "../src/templates/{$this->template}.php";
             
             return $this;
         }

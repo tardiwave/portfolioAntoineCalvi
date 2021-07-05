@@ -1,4 +1,5 @@
 <?php
+$router->template = "templateMain";
 $pageTitle = "Login";
 $pageDescription = "Connectez vous au blog";
 

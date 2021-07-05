@@ -24,6 +24,7 @@
             http_response_code(301);
             header('Location: ' . $url);
         }else {
+            $router->template = "templateMain";
             $pageTitle = $post->getName();
             $pageDescription = $post->getSDesc();
         }

@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Créer post - Admin";
 $pageDescription = "Ajouter un post à votre blog.";
 

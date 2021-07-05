@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Supprimer post - Admin";
 $pageDescription = "Supprimer un post de votre blog.";
 
