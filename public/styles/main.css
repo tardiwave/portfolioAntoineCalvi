@@ -1,0 +1,36 @@
+/* IMPORTS */
+
+@import './fonts.css';
+@import './header.css';
+@import './footer.css';
+@import './home.css';
+@import './splide.min.css';
+
+/* CONSTANTS */
+
+:root{
+    --primary: #23FF00;
+    --white: #E8E8E8;
+    --black: #000000;
+    --grey: #3C3C3C;
+}
+
+
+/* MAIN */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--black);
+}
+h1, h2, h3, h4, h5, h6, p, ul, li{
+    margin: 0;
+    padding: 0;
+}
+
+.pageContainer{
+    padding: 90px 15px;
+    min-height: calc(100vh - 180px);
+}

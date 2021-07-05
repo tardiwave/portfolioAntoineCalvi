@@ -10,7 +10,7 @@
     define('UPLOAD_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'uploads');
 
     $auth = new Auth();
-    $router = new Router($viewPath . '/views', $appName);
+    $router = new Router($viewPath . '/views', $appName, $componentsPath, $layoutPath, $templatesPath);
     require '../config/routes.php';
     $router->run();
     

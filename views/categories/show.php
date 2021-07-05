@@ -24,6 +24,7 @@
             http_response_code(301);
             header('Location: ' . $url);
         }else {
+            $router->template = "templateMain";
             $pageTitle = $category->getName();
             $pageDescription = $category->getSDesc();
 
@@ -40,7 +41,7 @@
 <a href="<?= $router->url('adminEditCategory', ['id' => $category->getId()]) ?>">Modifier</a>
 
 <?php foreach($posts as $post):
-    require '../src/components/card.php';
+    require '../src/components/Card.php';
 endforeach; 
 ?>
 <?php if(count($posts) < 1):?>

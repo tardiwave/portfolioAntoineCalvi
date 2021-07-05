@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Catégories - Admin";
 $pageDescription = "Gérez les catégories du blog";
 

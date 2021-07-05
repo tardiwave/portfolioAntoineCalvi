@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Dashboard - Admin";
 $pageDescription = "Gérez l'ensemble du blog";
 

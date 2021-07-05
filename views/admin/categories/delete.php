@@ -1,5 +1,5 @@
 <?php
-$router->layout = "layoutAdmin";
+$router->template = "templateAdmin";
 $pageTitle = "Supprimer catégorie - Admin";
 $pageDescription = "Supprimer une catégorie de votre blog.";
 

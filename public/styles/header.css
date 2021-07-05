@@ -1,0 +1,77 @@
+.headerContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.headerTopBar{
+    height: 17px;
+    background-color: var(--primary);
+    width: 100%;
+    line-height: 17px;
+    font-size: 12px;
+}
+.headerContent{
+    margin: 0 25px;
+    margin-top: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.headerIconContainer{
+    display: flex;
+    margin: auto;
+    margin-left: 0;
+}
+.headerIcon{
+    height: 30px;
+    width: 30px;
+    fill: var(--primary);
+    margin-right: 10px;
+}
+.headerMenuIcon{
+    height: 30px;
+    width: 30px;
+}
+.headerTitle{
+    font-family: 'Monument';
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0 15px;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    height: 30px;
+    width: fit-content;
+    margin: auto;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.headerLogin{
+    font-family: 'Helvetica';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0 15px;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    width: fit-content;
+    margin: auto;
+    margin-right: 0;
+    margin-left: 10px;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.headerButtons{
+    display: flex;
+    margin: auto;
+    margin-right: 0;
+}

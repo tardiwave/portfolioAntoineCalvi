@@ -1,5 +1,6 @@
 <?php
 http_response_code(403);
+$router->template = "templateMain";
 $pageTitle = "Erreur 403";
 $pageDescription = "Vous vous n'êtes pas autorisés à accéder à cette page.";
 ?>

@@ -1,4 +1,5 @@
 <?php
+$router->template = "templateMain";
 $pageTitle = "Categories";
 $pageDescription = "L'ensemble des cayegories";
 use App\Helpers\Text;
