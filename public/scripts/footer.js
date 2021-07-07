@@ -332,126 +332,126 @@ contactHeaderButton.addEventListener('click', () => {
 
 /* WINK */
 
-let winkMousePositionX = null;
-let winkMousePositionY = null;
+let newsMousePositionX = null;
+let newsMousePositionY = null;
 
-let winkGrabScroll = false;
-let winkGrabWindow = false;
-let winkInitX = null
-let winkInitY = null
-let winkInitXScroll = null
-let winkInitYScroll = null
+let newsGrabScroll = false;
+let newsGrabWindow = false;
+let newsInitX = null
+let newsInitY = null
+let newsInitXScroll = null
+let newsInitYScroll = null
 
 
-let winkScrollable = document.getElementById('winkScrollable');
-let winkContent = document.getElementById('winkScrollableContent');
-let winkScrollBar = document.getElementById('winkScrollBar');
-let winkTheScroll = document.getElementById('winkScroll');
+let newsScrollable = document.getElementById('newsScrollable');
+let newsContent = document.getElementById('newsScrollableContent');
+let newsScrollBar = document.getElementById('newsScrollBar');
+let newsTheScroll = document.getElementById('newsScroll');
 
-winkTheScroll.addEventListener( 'mousedown', () => {
-  winkGrabScroll = true;
+newsTheScroll.addEventListener( 'mousedown', () => {
+  newsGrabScroll = true;
   selectable(document.body, false);
 })
 
 document.addEventListener( 'mouseup', () => {
-  winkGrabScroll = false;
+  newsGrabScroll = false;
   selectable(document.body, true);
 })
-let winkDeltaScroll = null;
+let newsDeltaScroll = null;
 document.addEventListener('mousemove', e => {
-  winkMousePositionY = e.clientY;
-  if (winkGrabScroll) {
-    if (winkInitY === null) {
-      winkInitY = e.clientY
+  newsMousePositionY = e.clientY;
+  if (newsGrabScroll) {
+    if (newsInitY === null) {
+      newsInitY = e.clientY
     };
-    winkDeltaScroll = ( e.clientY - winkInitY ) * 100 / (winkScrollBar.clientHeight - winkTheScroll.clientHeight);
-    if(winkDeltaScroll <= 100 && winkDeltaScroll >= 0){
-      winkScrollable.scrollTo(0, ( ( winkDeltaScroll * (winkContent.clientHeight - winkScrollable.clientHeight + margin) ) / 100));
-      winkTheScroll.style.marginTop = `${e.clientY - winkInitY}px`;
+    newsDeltaScroll = ( e.clientY - newsInitY ) * 100 / (newsScrollBar.clientHeight - newsTheScroll.clientHeight);
+    if(newsDeltaScroll <= 100 && newsDeltaScroll >= 0){
+      newsScrollable.scrollTo(0, ( ( newsDeltaScroll * (newsContent.clientHeight - newsScrollable.clientHeight + margin) ) / 100));
+      newsTheScroll.style.marginTop = `${e.clientY - newsInitY}px`;
     }
   };
 });
-winkScrollable.addEventListener('scroll', () => {
-  let winkMaxScroll = winkContent.clientHeight - winkScrollable.clientHeight + margin
-  let winkScrollPourcentage = winkScrollable.scrollTop * 100 / winkMaxScroll;
-  let winkScrollLevel = (winkScrollPourcentage * winkScrollBar.clientHeight / 100) - winkTheScroll.clientHeight;
-  if(winkScrollLevel <= ( winkScrollBar.clientHeight - winkTheScroll.clientHeight ) && winkScrollLevel >= 0){
-    winkTheScroll.style.marginTop = `${winkScrollLevel}px`;
+newsScrollable.addEventListener('scroll', () => {
+  let newsMaxScroll = newsContent.clientHeight - newsScrollable.clientHeight + margin
+  let newsScrollPourcentage = newsScrollable.scrollTop * 100 / newsMaxScroll;
+  let newsScrollLevel = (newsScrollPourcentage * newsScrollBar.clientHeight / 100) - newsTheScroll.clientHeight;
+  if(newsScrollLevel <= ( newsScrollBar.clientHeight - newsTheScroll.clientHeight ) && newsScrollLevel >= 0){
+    newsTheScroll.style.marginTop = `${newsScrollLevel}px`;
   }
 });
 
 /* LITTLE WINDOW GRAB */
 
-let winkHeader = document.getElementById('winkTitle');
-let winkContainer = document.getElementById('wink');
+let newsHeader = document.getElementById('newsTitle');
+let newsContainer = document.getElementById('news');
 
-winkHeader.addEventListener( 'mousedown', (e) => {
-  winkGrabWindow = true;
-  winkDeltaY = e.clientY;
+newsHeader.addEventListener( 'mousedown', (e) => {
+  newsGrabWindow = true;
+  newsDeltaY = e.clientY;
   selectable(document.body, false);
 })
 
 document.addEventListener( 'mouseup', () => {
-  winkGrabWindow = false;
+  newsGrabWindow = false;
   selectable(document.body, true);
 })
-let winkDeltaX = null;
-let winkDeltaY = null;
-const winkBottomWindowStart = 119;
-const winkLetftWindowStart = 260;
-let winkBottomWindow = winkBottomWindowStart;
-let winkLetftWindow = winkLetftWindowStart;
+let newsDeltaX = null;
+let newsDeltaY = null;
+const newsBottomWindowStart = 119;
+const newsLetftWindowStart = 260;
+let newsBottomWindow = newsBottomWindowStart;
+let newsLetftWindow = newsLetftWindowStart;
 
 document.addEventListener('mousemove', e => {
-  winkMousePositionX = e.clientX;
-  winkDeltaY = e.clientY;
-  if (winkGrabWindow) {
-    if (winkInitYScroll === null) {
-      winkInitXScroll = e.clientX
-      winkInitYScroll = e.clientY
+  newsMousePositionX = e.clientX;
+  newsDeltaY = e.clientY;
+  if (newsGrabWindow) {
+    if (newsInitYScroll === null) {
+      newsInitXScroll = e.clientX
+      newsInitYScroll = e.clientY
     };
-    winkDeltaX = ( e.clientX - winkInitXScroll );
-    winkDeltaY = ( e.clientY - winkInitYScroll );
-    winkBottomWindow = winkBottomWindowStart - winkDeltaY;
-    winkLetftWindow = winkLetftWindowStart + winkDeltaX;
-    winkContainer.style.left = `${winkLetftWindow}px`;
-    winkContainer.style.bottom = `${winkBottomWindow}px`;
+    newsDeltaX = ( e.clientX - newsInitXScroll );
+    newsDeltaY = ( e.clientY - newsInitYScroll );
+    newsBottomWindow = newsBottomWindowStart - newsDeltaY;
+    newsLetftWindow = newsLetftWindowStart + newsDeltaX;
+    newsContainer.style.left = `${newsLetftWindow}px`;
+    newsContainer.style.bottom = `${newsBottomWindow}px`;
   };
 });
 
 /* LITTLE WINDOW TOGGLE */
 
-let winkDisplayStatus = false;
+let newsDisplayStatus = false;
 
-const resetWink = () => {
-  winkContainer.style.left = `${winkLetftWindowStart}px`;
-  winkContainer.style.bottom = `${winkBottomWindowStart}px`;
+const resetNews = () => {
+  newsContainer.style.left = `${newsLetftWindowStart}px`;
+  newsContainer.style.bottom = `${newsBottomWindowStart}px`;
 }
 
-let winkMenuButton = document.getElementById('winkMenuButton');
-let winkHeaderButton = document.getElementById('winkCrossContainer');
+let newsMenuButton = document.getElementById('newsMenuButton');
+let newsHeaderButton = document.getElementById('newsCrossContainer');
 
-winkMenuButton.addEventListener('click', () => {
-  winkDisplayStatus = !winkDisplayStatus;
-  if(!winkDisplayStatus){
-    resetWink();
-    winkContainer.style.display = "none";
+newsMenuButton.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
   }else {
-    winkContainer.style.display = "block";
-    if(winkContent.clientHeight >= winkScrollable.clientHeight) {
-      winkScrollBar.style.display = 'block';
+    newsContainer.style.display = "block";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
     };
   }
 });
-winkHeaderButton.addEventListener('click', () => {
-  winkDisplayStatus = !winkDisplayStatus;
-  if(!winkDisplayStatus){
-    resetWink();
-    winkContainer.style.display = "none";
+newsHeaderButton.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
   }else {
-    winkContainer.style.display = "block";
-    if(winkContent.clientHeight >= winkScrollable.clientHeight) {
-      winkScrollBar.style.display = 'block';
+    newsContainer.style.display = "block";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
     };
   }
 });
@@ -459,15 +459,15 @@ winkHeaderButton.addEventListener('click', () => {
 aboutContainer.addEventListener('click', () => {
   aboutContainer.style.zIndex = 2;
   contactContainer.style.zIndex = 1;
-  winkContainer.style.zIndex = 1;
+  newsContainer.style.zIndex = 1;
 })
 contactContainer.addEventListener('click', () => {
   aboutContainer.style.zIndex = 1;
   contactContainer.style.zIndex = 2;
-  winkContainer.style.zIndex = 1;
+  newsContainer.style.zIndex = 1;
 })
-winkContainer.addEventListener('click', () => {
+newsContainer.addEventListener('click', () => {
   aboutContainer.style.zIndex = 1;
   contactContainer.style.zIndex = 1;
-  winkContainer.style.zIndex = 2;
+  newsContainer.style.zIndex = 2;
 })

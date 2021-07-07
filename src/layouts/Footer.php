@@ -56,24 +56,24 @@
             </div>
         </div>
     </div>
-    <div id="wink" class="modal">
+    <div id="news" class="modal">
         <div class="modalHeader">
-            <h2 id="winkTitle" class="modalTitle">???</h2>
-            <div class="modalCrossContainer" id="winkCrossContainer">
+            <h2 id="newsTitle" class="modalTitle">News</h2>
+            <div class="modalCrossContainer" id="newsCrossContainer">
                 <svg class="modalCross" viewBox="0 0 386.667 386.667" xmlns="http://www.w3.org/2000/svg">
                     <path d="m386.667 45.564-45.564-45.564-147.77 147.769-147.769-147.769-45.564 45.564 147.769 147.769-147.769 147.77 45.564 45.564 147.769-147.769 147.769 147.769 45.564-45.564-147.768-147.77z"/>
                 </svg>
             </div>
         </div>
-        <div id="winkInfoBlock">
-            <div id="winkScrollable" class="modalScrollable">
-                <div id="winkScrollableContent" class="modalScrollableContent">
+        <div id="newsInfoBlock">
+            <div id="newsScrollable" class="modalScrollable">
+                <div id="newsScrollableContent" class="modalScrollableContent">
                     <!-- content -->
                 </div>    
             </div>
-            <div id="winkScrollBarContainer" class="modalScrollBarContainer">
-                <div id="winkScrollBar" class="modalScrollBar">
-                    <div id="winkScroll" class="modalScroll"></div>
+            <div id="newsScrollBarContainer" class="modalScrollBarContainer">
+                <div id="newsScrollBar" class="modalScrollBar">
+                    <div id="newsScroll" class="modalScroll"></div>
                 </div>
             </div>
         </div>
@@ -81,12 +81,12 @@
     <div class="footerRow">
         <div class="footerMenu">
             <div class="footerMenuRow">
-                <p class="footerMenuRowItem footerMenuRowItem1" id="aboutMenuButton">à propos</p>
-                <p class="footerMenuRowItem footerMenuRowItem2" id="winkMenuButton">???</p>
+                <p class="footerMenuRowItem footerMenuRowItem1" id="aboutMenuButton">À propos</p>
+                <p class="footerMenuRowItem footerMenuRowItem2" id="newsMenuButton">News</p>
             </div>
             <div class="footerMenuRow">
-                <p class="footerMenuRowItem footerMenuRowItem3" id="contactMenuButton">contact</p>
-                <a href="" class="footerMenuRowItem footerMenuRowItem4">TOUS MES TRAVAUX</a>
+                <p class="footerMenuRowItem footerMenuRowItem3" id="contactMenuButton">Contact</p>
+                <a href="" class="footerMenuRowItem footerMenuRowItem4">Tous mes travaux</a>
             </div>
         </div>
         <div class="footerChangeColorContainer" >
