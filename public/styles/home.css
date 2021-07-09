@@ -121,20 +121,7 @@
     border-radius: 0 !important;
     opacity: 1 !important;
 }
-.homeTitle{
-    font-family: 'Monument';
-    font-weight: normal;
-    text-transform: uppercase;
-    color: var(--white);
-    font-size: 18px;
-    text-align: center;
-}
-.homeTitleLine{
-    background-color: var(--primary);
-    height: 2px;
-    width: 140px;
-    margin: 17px 0;
-}
+
 .homeDesc{
     font-family: 'Helvetica';
     font-weight: normal;

@@ -3,8 +3,8 @@ $router->template = "templateMain";
 $pageTitle = "Accueil";
 $pageDescription = "Accueil";
 ?>
-<h1 class="homeTitle">Mes derniers travaux</h1>
-<span class="homeTitleLine"></span>
+<h1 class="pageTitle">Mes derniers travaux</h1>
+<span class="pageTitleLine"></span>
 <p class="homeDesc">Je suis Antoine Calvi, designer graphique indépendant.<br/>Et bienvenue sur mon Portfolio 👋</p>
 <div class="sliderContainer">
     <div id="splideMain" class="splide">

@@ -3,6 +3,9 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
 .headerTopBar{
     height: 17px;

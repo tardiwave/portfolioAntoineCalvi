@@ -24,11 +24,15 @@ $table->findPaginated();
 $link = $router->url('posts');
 
 ?>
-<?php foreach($posts as $post):
-    require '../src/components/Card.php';
-endforeach; 
-?>
-
-<h2>Pagination</h2>
-<?= $queryPagination->previousLink($link) ?>
-<?= $queryPagination->nextLink($link) ?>
+<div class="pageTitleContainer">
+    <h1 class="pageTitle">Tous mes travaux</h1>
+    <span class="pageTitleLine"></span>
+</div>
+<div class="postsGrid">
+    <?php 
+        foreach($posts as $post):
+        require '../src/components/Card.php';
+        endforeach;
+    ?>
+</div>
+<?= $queryPagination->getPagination($link) ?>

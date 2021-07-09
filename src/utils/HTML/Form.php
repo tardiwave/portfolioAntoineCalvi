@@ -51,7 +51,7 @@ HTML;
         <div class="w-100">
             <div class="mb-3 w-100">
                 <label for="fieldimage" class="form-label">{$label}<span title="required">*</span></label>
-                <input type="file" class="form-control w-100" id="field{$key}" class="{$this->inputClass($key)}" name="image" enctype="multipart/form-data">
+                <input type="file" class="form-control w-100" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" enctype="multipart/form-data">
                 {$this->getinvalidFeedback($key)}
             </div>
         </div>

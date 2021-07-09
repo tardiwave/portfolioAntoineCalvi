@@ -86,7 +86,7 @@
             </div>
             <div class="footerMenuRow">
                 <p class="footerMenuRowItem footerMenuRowItem3" id="contactMenuButton">Contact</p>
-                <a href="" class="footerMenuRowItem footerMenuRowItem4">Tous mes travaux</a>
+                <a href="<?= $router->url('posts'); ?>" class="footerMenuRowItem footerMenuRowItem4">Tous mes travaux</a>
             </div>
         </div>
         <div class="footerChangeColorContainer" >

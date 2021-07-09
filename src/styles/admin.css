@@ -33,7 +33,6 @@ html, body {
 }
 .canScroll{
     overflow-y: auto;
-    height: calc(100vh - 61px);
     width: 100%;
 }
 
@@ -58,6 +57,11 @@ html, body {
 .imagePost{
     width: 100%;
     max-width: 600px;
+}
+.thumbnailPost{
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
 }
 .imagePostContainer{
     display: flex;
@@ -86,6 +90,11 @@ html, body {
 }
 
 @media screen and (max-width: 1200px){
+    .canScroll{
+        overflow-y: auto;
+        height: calc(100vh - 61px);
+        width: 100%;
+    }
     .mobileNavBar{
         display: block;
     }

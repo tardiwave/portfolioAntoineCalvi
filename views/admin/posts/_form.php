@@ -9,26 +9,40 @@
     <div class="collapse" id="mainInfos">
         <?= $form->input('name', 'Titre') ?>
         <?= $form->input('slug', 'Slug') ?>
-        <?= $form->textarea('content', 'Description') ?>
+        <?= $form->textarea('sDesc', 'Petite description') ?>
         <?= $form->select('categories_ids', 'Catégorie', $categories) ?>
         <?= $form->input('date', 'Date') ?>
+        <?php
+        $thumbnail = $post->getThumbnail();
+        var_dump($thumbnail);
+        if($thumbnail):
+        ?>
+        <img src="/uploads/posts/thumbnail_<?= $thumbnail ?>" class="thumbnailPost" alt="">
+        <?php endif; ?>
+        <div class="inline">
+            <?= $form->file('thumbnail', 'Illustration (max 2Mo)') ?>
+            <button
+                type="submit"
+                class="btn btn-primary mb-3"
+                style="
+                    height: fit-content;
+                    white-space: nowrap;
+                    margin-top: auto;
+                    margin-left: 1em;"
+            >Mettre à jour/ Ajouter la miniature</button>
+        </div>
         <button type="submit" class="btn btn-primary mb-3"><?= $button ?></button>
+        <div class="inline">
+        </div>
     </div>
-    <div class="" data-bs-toggle="collapse" href="#contenu" role="button" aria-expanded="true" aria-controls="contenu">
+    <div class="" data-bs-toggle="collapse" href="#contenu" role="button" aria-expanded="<?= ($_GET['orderimage'] === 'success') ? 'true' : 'false'; ?>" aria-controls="contenu">
         <div class="d-flex justify-content-between">
             <h2>Contenu</h2>
             <img src="/assets/icons/arrow-down.svg" alt="" class="" style="width: 20px;">
         </div>
         <hr>
     </div>
-    <div class="collapse show " id="contenu">
-        <?php //if($post->getImageStrWE('large')): ?>
-        <?php 
-
-        $imagesTab = $post->getImageArr();
-
-        ?>
-        <?php //endif; ?>
+    <div class="collapse <?php if($_GET['orderimage'] === 'success') echo'show'; ?>" id="contenu">
         <h3>Ajouter image</h3>
         <div class="inline">
             <?= $form->file('image', 'Illustration (max 2Mo)') ?>
@@ -43,7 +57,9 @@
             >Ajouter image</button>
         </div>
 </form>
-<?php foreach($imagesTab as $key => $image): ?>
+<?php 
+    $imagesTab = $post->getImageArr();
+    foreach($imagesTab as $key => $image): ?>
     <?php
         $linkImage = str_replace(".","-",$image);
         $linkImage = explode("-",$linkImage);
@@ -66,7 +82,6 @@
     ?>
 <div class="imagePostContainer">
     <div>
-        <p><?= $image; ?></p>
         <img src="/uploads/posts/large_<?= $image ?>" class="imagePost" alt="">
     </div>
     <div class="orderButtons">
