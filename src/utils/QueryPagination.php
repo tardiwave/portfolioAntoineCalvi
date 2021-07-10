@@ -2,6 +2,9 @@
 namespace App;
 use \PDO;
 
+use App\Connection;
+use App\Table\SettingsTable;
+
 class QueryPagination {
 
     private $query;
@@ -26,7 +29,10 @@ class QueryPagination {
         $this->query = $query;
         $this->queryCount = $queryCount;
         $this->pdo = $pdo ?: Connection::getPDO();
-        $this->perPage = $perPage;
+        $settingsTable = new SettingsTable($this->pdo);
+        $settings = $settingsTable->find(1);
+        $settingPerPage = $settings->getPerPage();
+        $this->perPage = $settingPerPage;
     }
 
     public function getItems(string $classMapping, array $params):array

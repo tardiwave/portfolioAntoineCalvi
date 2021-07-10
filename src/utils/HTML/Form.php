@@ -19,7 +19,7 @@ class Form {
 
     }
 
-    public function input(string $key, string $label): string
+    public function input(string $key, string $label, bool $required): string
     {
         $value = $this->getValue($key);
         $type = 'text';
@@ -30,11 +30,17 @@ class Form {
         if(isset($this->errors[$key])){
             $inputClass .= ' is-invalid';
         }
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
         return <<<HTML
         <div>
             <div class="mb-3">
-                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
-                <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" required>
+                <label for="field{$key}" class="form-label">{$label} {$star}</label>
+                <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" {$needed}>
                 {$this->getinvalidFeedback($key)}
             </div>
         </div>
@@ -51,21 +57,27 @@ HTML;
         <div class="w-100">
             <div class="mb-3 w-100">
                 <label for="fieldimage" class="form-label">{$label}<span title="required">*</span></label>
-                <input type="file" class="form-control w-100" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" enctype="multipart/form-data">
+                <input type="file" class="form-control w-100" id="field{$key}" class="{$this->inputClass($key)}" name="image" enctype="multipart/form-data">
                 {$this->getinvalidFeedback($key)}
             </div>
         </div>
 HTML;
     }
 
-    public function textarea(string $key, string $label): string
+    public function textarea(string $key, string $label, bool $required): string
     {
         $value = $this->getValue($key);
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
         return <<<HTML
         <div>
             <div class="mb-3">
-                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
-                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" required>{$value}</textarea>
+                <label for="field{$key}" class="form-label">{$label} {$star}</label>
+                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}"  {$needed}>{$value}</textarea>
                 {$this->getinvalidFeedback($key)}
             </div>
         </div>

@@ -7,11 +7,11 @@
         <hr>
     </div>
     <div class="collapse" id="mainInfos">
-        <?= $form->input('name', 'Titre') ?>
-        <?= $form->input('slug', 'Slug') ?>
-        <?= $form->textarea('sDesc', 'Petite description') ?>
+        <?= $form->input('name', 'Titre', true) ?>
+        <?= $form->input('slug', 'Slug', true) ?>
+        <?= $form->textarea('sDesc', 'Petite description', true) ?>
         <?= $form->select('categories_ids', 'Catégorie', $categories) ?>
-        <?= $form->input('date', 'Date') ?>
+        <?= $form->input('date', 'Date', true) ?>
         <?php
         $thumbnail = $post->getThumbnail();
         var_dump($thumbnail);

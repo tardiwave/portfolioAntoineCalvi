@@ -1,7 +1,7 @@
 <?php
-$router->template = "templateMain";
-$pageTitle = "Accueil";
-$pageDescription = "Accueil";
+    $router->template = "templateMain";
+    $pageTitle = "Accueil";
+    $pageDescription = "Accueil";
 ?>
 <h1 class="pageTitle">Mes derniers travaux</h1>
 <span class="pageTitleLine"></span>

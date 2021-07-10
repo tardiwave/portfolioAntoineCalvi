@@ -29,6 +29,12 @@
     $router->match('/admin/categories/edit/[i:id]', 'admin/categories/edit', 'adminEditCategory');
     $router->post('/admin/categories/delete/[i:id]', 'admin/categories/delete', 'adminDeleteCategory');
 
+    $router->match('/admin/users/edit/', 'admin/users/edit', 'adminEditUser');
+
+    $router->match('/admin/news/edit/', 'admin/news/edit', 'adminEditNews');
+
+    $router->match('/admin/settings/edit/', 'admin/settings/edit', 'adminEditSettings');
+
     $router->get('/not-found', '404', '404');
     $router->get('/forbiden', '403', '403');
     

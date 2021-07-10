@@ -11,8 +11,8 @@ use App\Table\UserTable;
 $user = new User();
 
 $errors = [];
-$errors['password'] = 'Identifiant ou mot de passe incorrect.';
 if(!empty($_POST)){
+    $errors['password'] = 'Identifiant ou mot de passe incorrect.';
     $user->setUsername($_POST['username']);
     if( (!empty($_POST['username'])) && (!empty($_POST['password'])) ) {
         $pdo = Connection::getPDO();
@@ -32,11 +32,18 @@ if(!empty($_POST)){
 $form = new Form($user, $errors);
 
 ?>
-
-<h1>Se connecter</h1>
-
-<form action="<?= $router->url('login') ?>" method="post">
-    <?= $form->input('username', 'Nom d\'utilisateur'); ?>
-    <?= $form->input('password', 'Mot de passe'); ?>
-    <button type="submit">Se connecter</button>
-</form>
+<div class="loginForm">
+    <h1 class="loginTitle">Se connecter</h1>
+    <form action="<?= $router->url('login') ?>" method="post">
+        <div>
+            <label for="fieldusername" class="loginLabel">Nom d'utilisateur <span title="required">*</span></label>
+            <input name="username" type="text" class="loginInput" placeholder="Nom d'utilisateur" required>
+        </div>
+        <div>
+            <label for="fieldusername" class="loginLabel">Mot de passe<span title="required">*</span></label>
+            <input name="password" type="password" class="loginInput" placeholder="Mot de passe" required>
+        </div>
+        <p class="loginError"><?= $errors['password'] ?></p>
+        <button class="loginButton" type="submit">Se connecter</button>
+    </form>
+</div>

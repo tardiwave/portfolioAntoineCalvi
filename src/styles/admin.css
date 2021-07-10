@@ -9,7 +9,8 @@ a{
 .nav-link:hover{
     background-color: #0b5ed7 !important;
     border-color: #0a58ca !important;
-    color: #fff;
+    color: #fff !important;
+    border-radius: .25rem;
 }
 .dropdown a{
     color: rgba(0,0,0,.55);
@@ -38,6 +39,25 @@ html, body {
 
 .btnNotRounded{
     border-radius: 0;
+}
+.avatar{
+    background-color: #0d6efd;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-right: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.avatarLetters{
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+    color: white;
+    letter-spacing: -2px;
 }
 
 .mobileNavBar{

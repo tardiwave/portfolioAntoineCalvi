@@ -35,10 +35,10 @@ if(!empty($_POST)){
 }
 $form = new Form($category, $errors);
 if($success){
-    echo "La catégorie à bien été modifiée";
+    echo "<div class='alert alert-success' role='alert'>La catégorie à bien été modifiée</div>";
 }
 if(!empty($errors)){
-    echo "La catégorie n'a pas pu être modifiée";
+    echo "<div class='alert alert-danger' role='alert'>La catégorie n'a pas pu être modifiée</div>";
 }
 ?>
 

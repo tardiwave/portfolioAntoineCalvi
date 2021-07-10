@@ -68,6 +68,6 @@ if(!empty($errors)){
 </div>
 
 <?php 
-$button = 'Modifier Post';
+$button = 'Modifier le post';
 require('_form.php');
 ?>

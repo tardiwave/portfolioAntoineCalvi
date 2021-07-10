@@ -1,3 +1,26 @@
+<?php
+    use App\Connection;
+    use App\Table\UserTable;
+    use App\Table\NewsTable;
+
+    $pdo = Connection::getPDO();
+    $userTable = new UserTable($pdo);
+    $newsTable = new NewsTable($pdo);
+    $user = $userTable->findByUsername('admin');
+    $news = $newsTable->find(1);
+
+
+    $firstname = $user->getFirstname();
+    $lastname = $user->getLastname();
+    $work = $user->getWork();
+    $date = ($user->getBirth()->format('Y-m-d'));
+    $age = date('Y') - $date; 
+    if (date('md') < date('md', strtotime('2000-07-11'))) { 
+        $age = $age - 1; 
+    } 
+    $status = $user->getStatus();
+    $description = $user->getDescription();
+?>
 <footer class="footerContainer">
     <div id="about" class="modal">
         <div class="modalHeader">
@@ -11,20 +34,42 @@
         <div id="aboutInfoBlock" class="modalContentBlock">
             <div id="aboutScrollable" class="modalScrollable">
                 <div id="aboutScrollableContent" class="modalScrollableContent">
-                    <h3 class="aboutSubTitle">Antoine Calvi</h3>
+                    <?php if($username || $lastname): ?>
+                    <h3 class="aboutSubTitle"><?= $firstname ?> <?= $lastname ?></h3>
+                    <?php endif; ?>
                     <ul>
+                        <?php if($work): ?>
                         <li>
-                            <p class="aboutInfos">Designer Graphique</p>
+                            
+                            <p class="aboutInfos"><?= $work ?></p>
                         </li>
+                        <?php endif; ?>
+                        <?php if($age): ?>
                         <li>
-                            <p class="aboutInfos">21 ans</p>
+                            <p class="aboutInfos"><?= $age ?></p>
                         </li>
+                        <?php endif; ?>
                     </ul>
+                    <?php if($status): ?>
                     <h3 class="aboutSubTitle">Status</h3>
-                    <p class="aboutInfos">Disponible</p>
+                    <p class="aboutInfos">
+                        <?php
+                            switch ($status) {
+                                case 0:
+                                    echo 'Indisponible';
+                                break;
+                                case 1:
+                                    echo 'Disponible';
+                                break;
+                            };
+                        ?>
+                    </p>
+                    <?php endif; ?>
+                    <?php if($description): ?>
                     <h3 class="aboutSubTitle">Desciption</h3>
-                    <p class="aboutInfos">Bonjour! Je m'appelle Antoine Tardivel, je suis actuellement en deuxième année de DUT métier du multimédia et de l'internet (MMI), en France à l'IUT Bordeaux Montaigne. Je cherche en ce moment un stage sur Paris dans une agence en tant que développeur full stack ou front. sur la période 19 avril au 28 juin.</p>
-                    <p class="aboutInfos">Bonjour! Je m'appelle Antoine Tardivel, je suis actuellement en deuxième année de DUT métier du multimédia et de l'internet (MMI), en France à l'IUT Bordeaux Montaigne. Je cherche en ce moment un stage sur Paris dans une agence en tant que développeur full stack ou front. sur la période 19 avril au 28 juin.</p>
+                    <p class="aboutInfos"><?= $description ?></p>
+                    <?php endif; ?>
+                    
                 </div>    
             </div>
             <div id="aboutScrollBarContainer" class="modalScrollBarContainer">
@@ -67,9 +112,19 @@
         </div>
         <div id="newsInfoBlock">
             <div id="newsScrollable" class="modalScrollable">
-                <div id="newsScrollableContent" class="modalScrollableContent">
-                    <!-- content -->
-                </div>    
+                <div class="newsContent">
+                    <?php 
+                        $newsContent = $news->getContent();
+                        $newsTilte = $news->getTitle();
+                    if($newsContent):
+                    ?>
+                        <h3 class="newsTitle"><?= $newsTilte; ?></h3>
+                        <p class="newsInfos"><?= $news->getContent(); ?></p>
+                        
+                    <?php else: ?>
+                        <h3 class="newsTitle">Pas de news à afficher</h3>
+                    <?php endif; ?>
+                </div>
             </div>
             <div id="newsScrollBarContainer" class="modalScrollBarContainer">
                 <div id="newsScrollBar" class="modalScrollBar">

@@ -263,3 +263,31 @@
 .modalCrossContainer:hover .modalCross{
     fill: var(--black);
 }
+.newsContent{
+    margin-bottom: 12px;
+}
+.newsTitle{
+    margin-top: 12px;
+    font-family: 'Helvetica';
+    font-weight: bold;
+    font-size: 17px;
+    color: var(--white);
+    padding: 0 5px;
+}
+
+.newsInfos{
+    margin-top: 5px;
+    font-family: 'Helvetica';
+    font-weight: normal;
+    font-size: 17px;
+    color: var(--white);
+    padding: 0 5px;
+}
+.newsInfos::before{
+    margin-top: 5px;
+    font-family: 'Helvetica';
+    font-weight: normal;
+    font-size: 17px;
+    color: var(--white);
+    content: "> ";
+}

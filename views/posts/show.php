@@ -4,6 +4,7 @@
     use App\Models\{Post, Category};
     use App\Table\PostTable;
     use App\Table\CategoryTable;
+    use App\Table\SettingsTable;
     use App\Auth;
 
     $id = (int)$params['id'];
@@ -14,6 +15,9 @@
     $postTable = new PostTable($pdo);
     $post = $postTable->find($id);
     $postNumber = (new CategoryTable($pdo))->hydratePost([$post]);
+    $settingTable = new SettingsTable($pdo);
+    $setting = $settingTable->find(1);
+    $imageGap = $setting->getImageGap();
 
     if ($post === null){
         echo 'mauvais id';
@@ -51,5 +55,5 @@
 <p><?= $post->getContent() ?></p>
 
 <?php foreach($post->getImageArr() as $image): ?>
-    <img src="/uploads/posts/large_<?= $image ?>" class="postImage" alt="">
+    <img src="/uploads/posts/large_<?= $image ?>" class="postImage" alt="" style="margin-bottom: <?= $imageGap ?>px;">
 <?php endforeach; ?>

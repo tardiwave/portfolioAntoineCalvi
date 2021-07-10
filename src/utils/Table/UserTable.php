@@ -17,5 +17,5 @@ final class UserTable extends Table{
         $query->setFetchMode(PDO::FETCH_CLASS, $this->class);
         return $query->fetch() ?: null;
     }
-
+    
 }  

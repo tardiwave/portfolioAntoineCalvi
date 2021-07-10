@@ -6,6 +6,8 @@
 @import './home.css';
 @import './posts.css';
 @import './post.css';
+@import './login.css';
+@import './404.css';
 @import './splide.min.css';
 
 /* CONSTANTS */
@@ -37,7 +39,7 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     min-height: calc(100vh - 319px);
 }
 .pageTitleContainer{
-    margin-bottom: 70px;
+    margin-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
