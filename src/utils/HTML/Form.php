@@ -64,6 +64,26 @@ HTML;
 HTML;
     }
 
+    public function checkbox(string $key, string $label, bool $required): string
+    {
+        $value = $this->getValue($key);
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
+        return <<<HTML
+        <div>
+            <div class="mb-3">
+                <label for="field{$key}" class="form-label">{$label} {$star}</label> 
+                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}"  {$needed}>{$value}</textarea>
+                {$this->getinvalidFeedback($key)}
+            </div>
+        </div>
+HTML;
+    }
+
     public function textarea(string $key, string $label, bool $required): string
     {
         $value = $this->getValue($key);

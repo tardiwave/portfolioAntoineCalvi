@@ -17,7 +17,7 @@ $settings = $settingsTable->find(1);
 $success = false;
 
 $errors = [];
-$fields = ['perPage', 'imageGap'];
+$fields = ['perPage', 'imageGap', 'mailJetPublicKey', 'mailJetPrivateKey'];
 
 if(!empty($_POST)){
     $v = new SettingsValidator($_POST, $settingsTable, $settings->getId());
@@ -26,6 +26,8 @@ if(!empty($_POST)){
         $settingsTable->update([
             'perPage' => $settings->getPerPage(),
             'imageGap' => $settings->getImageGap(),
+            'mailJetPublicKey' => $settings->getMailJetPublicKey(),
+            'mailJetPrivateKey' => $settings->getmailJetPrivateKey(),
         ], $settings->getId());
         $success = true;
     }else{
@@ -41,7 +43,7 @@ if(!empty($errors)){
 }
 ?>
 
-<h1>Éditer profil</h1>
+<h1>Paramètres du site</h1>
 
 <?php 
 $button = 'Mettre à jour les paramètres';

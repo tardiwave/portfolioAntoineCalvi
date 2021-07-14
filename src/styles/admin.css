@@ -97,6 +97,11 @@ html, body {
     width: 100%;
     align-items: center;
 }
+.adminTitle{
+    text-align: CENTER;
+    font-weight: 500;
+    font-size: 20px !important;
+}
 @media screen and (max-width: 576px){
     .imagePostContainer{
         flex-direction: column;

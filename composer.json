@@ -12,7 +12,8 @@
     "require": {
         "altorouter/altorouter": "^1.2",
         "vlucas/valitron": "1.4.5",
-        "intervention/image": "^2.5"
+        "intervention/image": "^2.5",
+        "mailjet/mailjet-apiv3-php": "^1.5"
     },
     "autoload": {
         "files": ["src/utils/Helpers/Functions.php"],

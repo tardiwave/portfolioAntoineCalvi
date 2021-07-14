@@ -274,6 +274,22 @@
     color: var(--white);
     padding: 0 5px;
 }
+.newsLink{
+    font-family: 'Helvetica';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 12px;
+    padding: 2px 15px;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    margin: auto;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 2px;
+}
 
 .newsInfos{
     margin-top: 5px;
@@ -282,6 +298,7 @@
     font-size: 17px;
     color: var(--white);
     padding: 0 5px;
+    margin-bottom: 17px;
 }
 .newsInfos::before{
     margin-top: 5px;

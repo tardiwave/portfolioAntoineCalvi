@@ -9,6 +9,10 @@ class Settings {
 
     private $imageGap;
 
+    private $mailJetPublicKey;
+
+    private $mailJetPrivateKey;
+
     public function getId(): ?string
     {
         return $this->id;
@@ -33,6 +37,28 @@ class Settings {
     public function setImageGap(string $imageGap): self
     {
         $this->imageGap = $imageGap;
+        return $this;
+    }
+
+    public function getMailJetPublicKey(): ?string
+    {
+        return $this->mailJetPublicKey;
+    }
+
+    public function setMailJetPublicKey(string $mailJetPublicKey): self
+    {
+        $this->mailJetPublicKey = $mailJetPublicKey;
+        return $this;
+    }
+
+    public function getMailJetPrivateKey(): ?string
+    {
+        return $this->mailJetPrivateKey;
+    }
+
+    public function setMailJetPrivateKey(string $mailJetPrivateKey): self
+    {
+        $this->mailJetPrivateKey = $mailJetPrivateKey;
         return $this;
     }
 

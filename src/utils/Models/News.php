@@ -9,6 +9,10 @@ class News {
 
     private $content;
 
+    private $linkText;
+
+    private $link;
+
     public function getId(): ?string
     {
         return $this->id;
@@ -33,6 +37,28 @@ class News {
     public function setContent(string $content): self
     {
         $this->content = $content;
+        return $this;
+    }
+
+    public function getLinkText(): ?string
+    {
+        return $this->linkText;
+    }
+
+    public function setLinkText(string $linkText): self
+    {
+        $this->linkText = $linkText;
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(string $link): self
+    {
+        $this->link = $link;
         return $this;
     }
 

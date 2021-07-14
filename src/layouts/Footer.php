@@ -91,7 +91,18 @@
         <div id="contactInfoBlock">
             <div id="contactScrollable" class="modalScrollable">
                 <div id="contactScrollableContent" class="modalScrollableContent">
-                    <!-- content -->
+                    <form action="/contact" method="post">
+                        <div class></div>
+                        <label for="name">Nom :</label>
+                        <input type="text" name="name" id="contactName" class="contactInput" placeholder="Votre nom">
+                        <label for="email">Email :</label>
+                        <input type="email" name="email" id="contactEmail" class="contactInput" placeholder="Votre mail">
+                        <label for="subject">Sujet :</label>
+                        <input type="text" name="subject" id="contactSubject" class="contactInput" placeholder="Sujet de votre message">
+                        <label for="message">Message :</label>
+                        <input type="text" name="message" id="contactName" class="contactInput" placeholder="Votre message">
+                        <button type="submit">Envoyer</button>
+                    </form>
                 </div>    
             </div>
             <div id="contactScrollBarContainer" class="modalScrollBarContainer">
@@ -116,11 +127,23 @@
                     <?php 
                         $newsContent = $news->getContent();
                         $newsTilte = $news->getTitle();
+                        $newsLinkText = $news->getLinkText();
+                        $newsLink = $news->getLink();
                     if($newsContent):
                     ?>
                         <h3 class="newsTitle"><?= $newsTilte; ?></h3>
                         <p class="newsInfos"><?= $news->getContent(); ?></p>
-                        
+                        <?php if($newsLink): ?>
+                            <a class="newsLink" target="_blank" href="<?= $newsLink ?>">
+                                <?php
+                                    if($newsLinkText){
+                                        echo $newsLinkText;
+                                    }else{
+                                        echo 'Consulter';
+                                    }
+                                ?>
+                            </a>
+                        <?php endif; ?>
                     <?php else: ?>
                         <h3 class="newsTitle">Pas de news à afficher</h3>
                     <?php endif; ?>

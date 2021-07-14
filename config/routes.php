@@ -35,6 +35,8 @@
 
     $router->match('/admin/settings/edit/', 'admin/settings/edit', 'adminEditSettings');
 
+    $router->post('/contact', 'contact/sendMail', 'sendMail');
+
     $router->get('/not-found', '404', '404');
     $router->get('/forbiden', '403', '403');
     

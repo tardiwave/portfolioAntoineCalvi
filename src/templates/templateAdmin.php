@@ -27,7 +27,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="<?= $router->url('home') ?>">Logo</a>
+                <a class="navbar-brand adminTitle" href="<?= $router->url('home') ?>">PORTFOLIO ANTOINE CALVI</a>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -72,8 +72,8 @@
         <div class="d-flex bodyContainer">
             <div class="d-flex flex-column flex-shrink-0 p-3 desktopNavBar bg-light" style="width: 280px;">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto  text-decoration-none">
-                    <span class="m-2" >LOGO</span>
-                    <span class="fs-4">Portfolio</span>
+                    <!-- <span class="m-2" >LOGO</span> -->
+                    <span class="adminTitle">PORTFOLIO ANTOINE CALVI</span>
                 </a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">

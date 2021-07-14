@@ -17,7 +17,7 @@ $news = $newsTable->find(1);
 $success = false;
 
 $errors = [];
-$fields = ['title', 'content'];
+$fields = ['title', 'content', 'linkText', 'link'];
 
 if(!empty($_POST)){
     $v = new NewsValidator($_POST, $newsTable, $news->getId());
@@ -26,6 +26,8 @@ if(!empty($_POST)){
         $newsTable->update([
             'title' => $news->getTitle(),
             'content' => $news->getContent(),
+            'linkText' => $news->getLinkText(),
+            'link' => $news->getLink(),
         ], $news->getId());
         $success = true;
     }else{
