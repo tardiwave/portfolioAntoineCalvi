@@ -9,6 +9,7 @@
 @import './login.css';
 @import './404.css';
 @import './tips.css';
+@import './categories.css';
 @import './splide.min.css';
 
 /* CONSTANTS */
@@ -94,4 +95,13 @@ h1, h2, h3, h4, h5, h6, p, ul, li{
     height: 2px;
     width: 140px;
     margin: 17px 0;
+}
+
+.noElements{
+    font-family: 'Monument';
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 17px;
 }

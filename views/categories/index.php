@@ -23,12 +23,23 @@ $categories = $queryPagination->getItems(Category::class, []);
 $link = $router->url('categories');
 
 ?>
-<?php foreach($categories as $category): ?>
-    <p><?= $category->getName(); ?></p>
-    <p><?= $category->getDate()->format('d/m/Y'); ?></p>
-    <a href="<?= $router->url('category', ['slug' => $category->getSlug(), 'id' => $category->getId()]); ?>">Voir la categorie</a>
-<?php endforeach; ?>
 
-<h2>Pagination</h2>
-<?= $queryPagination->previousLink($link) ?>
-<?= $queryPagination->nextLink($link) ?>
+
+<div class="pageTitleContainer">
+    <h1 class="pageTitle">Toutes les categories</h1>
+    <span class="pageTitleLine"></span>
+</div>
+<div class="postsGrid">
+    <?php if(count($categories) >= 1): ?>
+        <?php foreach($categories as $category): ?>
+            <div class="categoryCard">
+                <h2 class="categoryCardTitle"><?= $category->getName(); ?></h2>
+                <p class="categoryCardDesc"><?= $category->getSDesc() ?></p>
+                <a class="categoryCardLink" href="<?= $router->url('category', ['slug' => $category->getSlug(), 'id' => $category->getId()]); ?>">Voir plus</a>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <h2 class="noElements">Pas de catégories à afficher</h2>
+    <?php endif; ?>
+</div>
+<?= $queryPagination->getPagination($link) ?>

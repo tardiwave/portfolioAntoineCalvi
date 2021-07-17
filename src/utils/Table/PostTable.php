@@ -55,7 +55,7 @@ final class PostTable extends Table{
     }
     public function findHomePage ()
     {
-        $query = $this->pdo->prepare("SELECT name, shortDescription, thumbnail FROM posts WHERE homePage = :display");
+        $query = $this->pdo->prepare("SELECT name, shortDescription, thumbnail, id, slug FROM posts WHERE homePage = :display");
         $query->execute(['display' => "on"]);
         $query->setFetchMode(PDO::FETCH_CLASS, $this->class);
         return $query->fetchAll() ?: null;

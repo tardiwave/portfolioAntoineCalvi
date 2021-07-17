@@ -17,7 +17,7 @@ $category = $categoryTable->find($params['id']);
 $success = false;
 
 $errors = [];
-$fields = ['name', 'slug', 'date'];
+$fields = ['name', 'slug', 'date', 'sDesc'];
 
 if(!empty($_POST)){
     $v = new CategoryValidator($_POST, $categoryTable, $category->getId());
@@ -25,6 +25,7 @@ if(!empty($_POST)){
     if($v->validate()){
         $categoryTable->update([
             'name' => $category->getName(),
+            'shortDescription' => $category->getSDesc(),
             'slug' => $category->getSlug(),
             'createdAt' => $category->getDate()->format('Y-m-d H:i:s')
         ], $category->getId());

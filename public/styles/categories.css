@@ -1,0 +1,45 @@
+.categoryCard{
+    border: 2px solid var(--grey);
+    border-radius: 17px;
+    padding: 10px;
+}
+.categoryCard:hover{
+    border: 2px solid var(--primary);
+}
+
+.categoryCardTitle{
+    font-family: 'Monument';
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+.categoryCardLink{
+    font-family: 'Helvetica';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0 15px;
+    border: 2px solid var(--grey);
+    border-radius: 25px;
+    width: fit-content;
+    margin: auto;
+    margin-right: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.categoryCard:hover .categoryCardLink{
+    border: 2px solid var(--primary);
+}
+.categoryCardDesc{
+    font-family: 'Helvetica';
+    font-weight: bold;
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 17px;
+}

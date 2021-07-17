@@ -13,14 +13,14 @@
 <h1 class="pageTitle">Mes derniers travaux</h1>
 <span class="pageTitleLine"></span>
 <p class="homeDesc">Je suis Antoine Calvi, designer graphique indépendant.<br/>Et bienvenue sur mon Portfolio 👋</p>
-<?php if(count($postsToDisplay) > 4): ?>
+<?php if(count($postsToDisplay) > 3): ?>
 <div class="sliderContainer">
     <div id="splideMain" class="splide">
         <div class="splide__track">
             <ul class="splide__list">
                 <?php foreach($postsToDisplay as $post): ?>
                     <li class="splide__slide">
-                        <a>
+                        <a href="<?= $router->url('post', ['slug' => $post->getSlug(), 'id' => $post->getId()]); ?>">
                             <img src="/uploads/posts/thumbnail_<?= $post->getThumbnail(); ?>" alt="Thumbnail <?= $post->getName(); ?>">
                             <span class="borders">
                                 <span class="c">
@@ -48,7 +48,7 @@
         </div>
     </div>
 </div>
-<?php else: ?>
+<?php elseif((count($posts) >= 1)): ?>
     <div class="postsGridHome">
         <?php 
             foreach($postsToDisplay as $post):
@@ -56,6 +56,8 @@
             endforeach;
         ?>
     </div>
+<?php else: ?>
+    <h2 class="noElements">Pas de catégories à afficher</h2>
 <?php endif; ?>
 
 <div class="allTips">

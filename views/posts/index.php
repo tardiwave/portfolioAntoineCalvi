@@ -29,10 +29,14 @@ $link = $router->url('posts');
     <span class="pageTitleLine"></span>
 </div>
 <div class="postsGrid">
-    <?php 
-        foreach($posts as $post):
-        require '../src/components/Card.php';
-        endforeach;
-    ?>
+    <?php if(count($posts) >= 1): ?>
+        <?php 
+            foreach($posts as $post):
+            require '../src/components/Card.php';
+            endforeach;
+        ?>
+    <?php else: ?>
+        <h2 class="noElements">Pas de posts à afficher</h2>
+    <?php endif; ?>
 </div>
 <?= $queryPagination->getPagination($link) ?>
