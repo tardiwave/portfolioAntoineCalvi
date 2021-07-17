@@ -130,3 +130,12 @@
     margin-bottom: 17px;
     text-align: center;
 }
+.postsGridHome{
+    width: 100%;
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 17px;
+    row-gap: 34px;
+    margin-top: 25px;
+}

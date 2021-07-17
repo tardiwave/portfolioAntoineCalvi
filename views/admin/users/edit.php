@@ -29,7 +29,7 @@ if(!empty($_POST)){
             'mail' => $user->getMail(),
             'birth' => $user->getBirth()->format('Y-m-d H:i:s'),
             'work' => $user->getWork(),
-            'status' => true,
+            'status' => $user->getStatus(),
             'description' => $user->getDescription(),
             'instagram' => $user->getInstagram(),
             'behance' => $user->getBehance(),

@@ -37,7 +37,7 @@ const intervalColorChange = (left, right, gradientIndex1, gradientIndex2) =>{
     medianecolorB = Math.round(gradientTab[gradientIndex1][2]*pourcentColorB + gradientTab[gradientIndex2][2]*pourcentColorA);
     medianecolor = "rgb(" + medianecolorR + ", " +medianecolorG + ", " + medianecolorB + ")";
     document.documentElement.style.setProperty('--primary', medianecolor);
-    document.cookie = `primarycolor=${medianecolor}; expires=${cookieDate}; path=/`;
+    document.cookie = `primarycolor=${medianecolor}; expires=${cookieDate}; path=/; SameSite=None; Secure`;
 }
 const footerChangeColorRange = (e) => {
     slidercolor = e.target.value;
@@ -57,7 +57,7 @@ const footerChangeColorRange = (e) => {
 }
 document.getElementById('footerChangeColorTextReset').addEventListener('click', () => {
   document.documentElement.style.setProperty('--primary', mainColor);
-  document.cookie = `primarycolor=${mainColor}; expires=${cookieDate}; path=/`;
+  document.cookie = `primarycolor=${mainColor}; expires=${cookieDate}; path=/; SameSite=None; Secure`;
 })
 
 const margin = 24;

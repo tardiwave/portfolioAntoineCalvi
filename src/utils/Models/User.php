@@ -116,12 +116,12 @@ class User {
         return $this;
     }
 
-    public function getStatus(): ?bool
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): self
+    public function setStatus($status): self
     {
         $this->status = $status;
         return $this;

@@ -1,8 +1,9 @@
 
 .allTips{
     position: fixed;
-    top: 140px;
+    top: 90px;
     left: 22px; 
+    z-index: 3;
 }
 .tips{
     width: 250px;

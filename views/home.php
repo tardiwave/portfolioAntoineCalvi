@@ -2,330 +2,62 @@
     $router->template = "templateMain";
     $pageTitle = "Accueil";
     $pageDescription = "Accueil";
+
+    use App\Table\PostTable;
+    use App\Connection;
+
+    $pdo = Connection::getPDO();
+    $table = new PostTable($pdo);
+    $postsToDisplay = $table->findHomePage();
 ?>
 <h1 class="pageTitle">Mes derniers travaux</h1>
 <span class="pageTitleLine"></span>
 <p class="homeDesc">Je suis Antoine Calvi, designer graphique indépendant.<br/>Et bienvenue sur mon Portfolio 👋</p>
+<?php if(count($postsToDisplay) > 4): ?>
 <div class="sliderContainer">
     <div id="splideMain" class="splide">
         <div class="splide__track">
             <ul class="splide__list">
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
+                <?php foreach($postsToDisplay as $post): ?>
+                    <li class="splide__slide">
+                        <a>
+                            <img src="/uploads/posts/thumbnail_<?= $post->getThumbnail(); ?>" alt="Thumbnail <?= $post->getName(); ?>">
+                            <span class="borders">
+                                <span class="c">
+                                    <span class="square"></span>
+                                    <span class="square"></span>
+                                    <span class="square"></span>
+                                </span>
+                                <span class="c">
+                                    <span class="square"></span>
+                                    <span class="square"></span>
+                                </span>
+                                <span class="c">
+                                    <span class="square"></span>
+                                    <span class="square"></span>
+                                    <span class="square"></span>
+                                </span>
                             </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
-                <li class="splide__slide">
-                    <a>
-                        <img src="/assets/images/image.png" alt="">
-                        <span class="borders">
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                            <span class="c">
-                                <span class="square"></span>
-                                <span class="square"></span>
-                                <span class="square"></span>
-                            </span>
-                        </span>
-                        <span class="border"></span>
-                        <span class="title">TERRE BRûLée</span>
-                        <span class="desc">Design de marque & produit</span>
-                    </a>
-                </li>
+                            <span class="border"></span>
+                            <span class="title"><?= $post->getName(); ?></span>
+                            <span class="desc"><?= $post->getSDesc(); ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
 </div>
+<?php else: ?>
+    <div class="postsGridHome">
+        <?php 
+            foreach($postsToDisplay as $post):
+            require '../src/components/Card.php';
+            endforeach;
+        ?>
+    </div>
+<?php endif; ?>
+
 <div class="allTips">
     <?php
         $allTips = [

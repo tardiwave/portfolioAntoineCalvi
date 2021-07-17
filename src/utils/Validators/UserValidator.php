@@ -10,7 +10,7 @@ class UserValidator extends AbstractValidator{
     {
         Validator::lang('fr');
         parent::__construct($data);
-        $this->validator->rule('required', ['firstname', 'lastname', 'mail', 'work', 'birth', 'status', 'description']);
+        $this->validator->rule('required', ['firstname', 'lastname', 'mail', 'work', 'birth', 'description']);
         $this->validator->rule('lengthBetween', ['description'], 5, 500);
     }
 }

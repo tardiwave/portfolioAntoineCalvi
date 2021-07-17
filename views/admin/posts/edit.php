@@ -23,7 +23,7 @@ $categoryTable->hydratePost([$post]);
 $success = false;
 $errors = [];
 $noImage = false;
-$fields = ['name', 'sDesc', 'slug', 'date'];
+$fields = ['name', 'sDesc', 'slug', 'date', 'homePage'];
 if(!empty($_POST)){
     $data = array_merge($_POST);
     $v = new PostValidator($data, $postTable, $post->getId(), $categories);
@@ -38,7 +38,8 @@ if(!empty($_POST)){
                 'createdAt' => $post->getDate()->format('Y-m-d H:i:s'),
                 'image' => $post->getImageStr(),
                 'thumbnail' => $post->getThumbnail(),
-                'imageExtension' => $post->getImageExtension()
+                'imageExtension' => $post->getImageExtension(),
+                'homePage' => $post->getHomePage(),
             ], $post->getId());
             if(isset($_POST["categories_ids"])){
                 $postTable->attachCategories($post->getId(), $_POST["categories_ids"]);

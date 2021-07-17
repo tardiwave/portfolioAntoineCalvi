@@ -50,21 +50,16 @@
                         </li>
                         <?php endif; ?>
                     </ul>
-                    <?php if($status): ?>
                     <h3 class="aboutSubTitle">Status</h3>
                     <p class="aboutInfos">
                         <?php
-                            switch ($status) {
-                                case 0:
-                                    echo 'Indisponible';
-                                break;
-                                case 1:
-                                    echo 'Disponible';
-                                break;
-                            };
+                            if($status === 'on'){
+                                echo 'Disponible';
+                            } else {
+                                echo 'Indisponible';
+                            }
                         ?>
                     </p>
-                    <?php endif; ?>
                     <?php if($description): ?>
                     <h3 class="aboutSubTitle">Desciption</h3>
                     <p class="aboutInfos"><?= $description ?></p>

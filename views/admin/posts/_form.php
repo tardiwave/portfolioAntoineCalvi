@@ -12,9 +12,9 @@
         <?= $form->textarea('sDesc', 'Petite description', true) ?>
         <?= $form->select('categories_ids', 'Catégorie', $categories) ?>
         <?= $form->input('date', 'Date', true) ?>
+        <?= $form->checkbox('homePage', "Affiché sur la page d'accueil ?", true) ?>
         <?php
         $thumbnail = $post->getThumbnail();
-        var_dump($thumbnail);
         if($thumbnail):
         ?>
         <img src="/uploads/posts/thumbnail_<?= $thumbnail ?>" class="thumbnailPost" alt="">

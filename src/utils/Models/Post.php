@@ -31,6 +31,8 @@ class Post {
 
     private $pendingUpload;
 
+    private $homePage;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -213,15 +215,16 @@ class Post {
         return $this->imageExtension;
     }
 
-    // public function getOldImage(): ?string
-    // {
-    //     return $this->oldImage;
-    // }
+    public function getHomePage(): ?string
+    {
+        return $this->homePage;
+    }
 
-    // public function getOldImageExtension(): ?string
-    // {
-    //     return $this->oldImageExtension;
-    // }
+    public function setHomePage($homePage): self
+    {
+        $this->homePage = $homePage;
+        return $this;
+    }
 
     public function shouldUpload(): bool
     {
