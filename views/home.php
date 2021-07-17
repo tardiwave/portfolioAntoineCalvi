@@ -326,8 +326,21 @@
         </div>
     </div>
 </div>
+<div class="allTips">
+    <?php
+        $allTips = [
+            'Change la couleur principale du site avec le slider',
+            'Maintient le clique gauche enfoncé sur la barre des fenêtres pour les déplacer',
+            'Mes réseaux sont en haut à gauche si tu ne veux rien manquer ;)'
+        ];
+        foreach($allTips as $key=>$tips){
+            require '../src/components/Tips.php';
+        }
+    ?>
+</div>
 
 <?php ob_start(); ?>
+<script src="/scripts/tips.js"></script>
 <script src="/scripts/splide.min.js"></script>
 <script src="/scripts/scriptHome.js"></script>
 <?php $pageJavascripts .= ob_get_clean(); ?>
