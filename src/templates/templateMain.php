@@ -1,5 +1,12 @@
 <?php
-use App\Auth;
+    use App\Auth;
+    use App\Connection;
+    use App\Table\SettingsTable;
+    $pdo = Connection::getPDO();
+    $settingsTable = new SettingsTable($pdo);
+    $settings = $settingsTable->find(1);
+    $googleAnalyticsKey = $settings->getGoogleAnalyticsKey();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,12 +26,14 @@ use App\Auth;
     <?php require($layoutPath . 'Footer.php'); ?>
     <?= $pageJavascripts ?? '' ?>
     <script src="/scripts/scriptMain.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VEFGYJVDG"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <?php if($googleAnalyticsKey): ?>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $googleAnalyticsKey ?>"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-    gtag('config', 'G-6VEFGYJVDG');
-    </script>
+            gtag('config', '<?= $googleAnalyticsKey ?>');
+        </script>
+    <?php endif; ?>
 </html>

@@ -21,6 +21,7 @@
     color: var(--white);
     font-size: 14px;
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 .loginInput{
     margin-bottom: 10px;
@@ -37,6 +38,7 @@
     background-color : var(--black);
     width: 100%;
     max-width: calc(100% - 30px);
+    margin-top: 5px;
 }
 .loginForm div .text-danger{
     margin-top: 10px;

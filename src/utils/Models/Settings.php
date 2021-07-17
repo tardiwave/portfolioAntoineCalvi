@@ -13,6 +13,8 @@ class Settings {
 
     private $mailJetPrivateKey;
 
+    private $googleAnalyticsKey;
+
     public function getId(): ?string
     {
         return $this->id;
@@ -59,6 +61,17 @@ class Settings {
     public function setMailJetPrivateKey(string $mailJetPrivateKey): self
     {
         $this->mailJetPrivateKey = $mailJetPrivateKey;
+        return $this;
+    }
+
+    public function getGoogleAnalyticsKey(): ?string
+    {
+        return $this->googleAnalyticsKey;
+    }
+
+    public function setGoogleAnalyticsKey(string $googleAnalyticsKey): self
+    {
+        $this->googleAnalyticsKey = $googleAnalyticsKey;
         return $this;
     }
 

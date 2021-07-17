@@ -88,20 +88,20 @@
                 </svg>
             </div>
         </div>
-        <div id="contactInfoBlock">
+        <div id="contactInfoBlock" class="modalContentBlock">
             <div id="contactScrollable" class="modalScrollable">
                 <div id="contactScrollableContent" class="modalScrollableContent">
-                    <form action="/contact" method="post">
+                    <form action="/contact" method="post" class="contactForm" >
                         <div class></div>
-                        <label for="name">Nom :</label>
+                        <label for="name" class="contactLabel">Nom :</label>
                         <input type="text" name="name" id="contactName" class="contactInput" placeholder="Votre nom">
-                        <label for="email">Email :</label>
+                        <label for="email" class="contactLabel">Email :</label>
                         <input type="email" name="email" id="contactEmail" class="contactInput" placeholder="Votre mail">
-                        <label for="subject">Sujet :</label>
+                        <label for="subject" class="contactLabel">Sujet :</label>
                         <input type="text" name="subject" id="contactSubject" class="contactInput" placeholder="Sujet de votre message">
-                        <label for="message">Message :</label>
-                        <input type="text" name="message" id="contactName" class="contactInput" placeholder="Votre message">
-                        <button type="submit">Envoyer</button>
+                        <label for="message" class="contactLabel">Message :</label>
+                        <textarea type="text" name="message" id="contactMessage" class="contactTextArea" placeholder="Votre message" rows="5"></textarea>
+                        <button type="submit" class="contactButton">Envoyer</button>
                     </form>
                 </div>    
             </div>

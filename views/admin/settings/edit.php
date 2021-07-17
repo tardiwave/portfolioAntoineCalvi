@@ -17,7 +17,7 @@ $settings = $settingsTable->find(1);
 $success = false;
 
 $errors = [];
-$fields = ['perPage', 'imageGap', 'mailJetPublicKey', 'mailJetPrivateKey'];
+$fields = ['perPage', 'imageGap', 'mailJetPublicKey', 'mailJetPrivateKey', 'googleAnalyticsKey'];
 
 if(!empty($_POST)){
     $v = new SettingsValidator($_POST, $settingsTable, $settings->getId());
@@ -27,7 +27,8 @@ if(!empty($_POST)){
             'perPage' => $settings->getPerPage(),
             'imageGap' => $settings->getImageGap(),
             'mailJetPublicKey' => $settings->getMailJetPublicKey(),
-            'mailJetPrivateKey' => $settings->getmailJetPrivateKey(),
+            'mailJetPrivateKey' => $settings->getMailJetPrivateKey(),
+            'googleAnalyticsKey' => $settings->getGoogleAnalyticsKey(),
         ], $settings->getId());
         $success = true;
     }else{

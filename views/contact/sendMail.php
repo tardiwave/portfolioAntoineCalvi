@@ -7,7 +7,7 @@
     $settingsTable = new SettingsTable($pdo);
     $settings = $settingsTable->find(1);
     $publicKey = $settings->getMailJetPublicKey();
-    $privateKey = $settings->getmailJetPrivateKey();
+    $privateKey = $settings->getMailJetPrivateKey();
 
     $router->template = "templateMain";
     $pageTitle = "Contact";
