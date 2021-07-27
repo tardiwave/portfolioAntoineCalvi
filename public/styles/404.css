@@ -1,0 +1,29 @@
+.notFoundTitle{
+    font-family: 'Monument';
+    color: var(--grey);
+    text-transform: uppercase;
+    font-size: 25px;
+}
+.notFoundSubTitle{
+    font-family: 'Montserrat';
+    color: var(--grey);
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-bottom: 17px;
+}
+.notFoundButton{
+    font-family: 'Helvetica';
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0 15px;
+    border: 2px solid var(--primary);
+    border-radius: 25px;
+    width: fit-content;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer
+}

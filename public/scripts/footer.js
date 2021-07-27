@@ -37,7 +37,7 @@ const intervalColorChange = (left, right, gradientIndex1, gradientIndex2) =>{
     medianecolorB = Math.round(gradientTab[gradientIndex1][2]*pourcentColorB + gradientTab[gradientIndex2][2]*pourcentColorA);
     medianecolor = "rgb(" + medianecolorR + ", " +medianecolorG + ", " + medianecolorB + ")";
     document.documentElement.style.setProperty('--primary', medianecolor);
-    document.cookie = `primarycolor=${medianecolor}; expires=${cookieDate}; path=/`;
+    document.cookie = `primarycolor=${medianecolor}; expires=${cookieDate}; path=/; SameSite=None; Secure`;
 }
 const footerChangeColorRange = (e) => {
     slidercolor = e.target.value;
@@ -57,7 +57,7 @@ const footerChangeColorRange = (e) => {
 }
 document.getElementById('footerChangeColorTextReset').addEventListener('click', () => {
   document.documentElement.style.setProperty('--primary', mainColor);
-  document.cookie = `primarycolor=${mainColor}; expires=${cookieDate}; path=/`;
+  document.cookie = `primarycolor=${mainColor}; expires=${cookieDate}; path=/; SameSite=None; Secure`;
 })
 
 const margin = 24;
@@ -177,6 +177,8 @@ const resetAbout = () => {
 }
 
 let aboutMenuButton = document.getElementById('aboutMenuButton');
+let aboutMenuButtonMobile = document.getElementById('aboutMenuButtonMobile');
+let menuBgAbout = document.getElementById('menuBgAbout');
 let aboutHeaderButton = document.getElementById('aboutCrossContainer');
 
 aboutMenuButton.addEventListener('click', () => {
@@ -184,8 +186,24 @@ aboutMenuButton.addEventListener('click', () => {
   if(!aboutDisplayStatus){
     resetAbout();
     aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
   }else {
     aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "none";
+    if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
+      aboutScrollBar.style.display = 'block';
+    };
+  }
+});
+aboutMenuButtonMobile.addEventListener('click', () => {
+  aboutDisplayStatus = !aboutDisplayStatus;
+  if(!aboutDisplayStatus){
+    resetAbout();
+    aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
+  }else {
+    aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "block";
     if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
       aboutScrollBar.style.display = 'block';
     };
@@ -196,8 +214,10 @@ aboutHeaderButton.addEventListener('click', () => {
   if(!aboutDisplayStatus){
     resetAbout();
     aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
   }else {
     aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "none";
     if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
       aboutScrollBar.style.display = 'block';
     };
@@ -303,6 +323,8 @@ const resetContact = () => {
 }
 
 let contactMenuButton = document.getElementById('contactMenuButton');
+let contactMenuButtonMobile = document.getElementById('contactMenuButtonMobile');
+let menuBgContact = document.getElementById('menuBgContact');
 let contactHeaderButton = document.getElementById('contactCrossContainer');
 
 contactMenuButton.addEventListener('click', () => {
@@ -310,8 +332,24 @@ contactMenuButton.addEventListener('click', () => {
   if(!contactDisplayStatus){
     resetContact();
     contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
   }else {
     contactContainer.style.display = "block";
+    menuBgContact.style.display = "none";
+    if(contactContent.clientHeight >= contactScrollable.clientHeight) {
+      contactScrollBar.style.display = 'block';
+    };
+  }
+});
+contactMenuButtonMobile.addEventListener('click', () => {
+  contactDisplayStatus = !contactDisplayStatus;
+  if(!contactDisplayStatus){
+    resetContact();
+    contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
+  }else {
+    contactContainer.style.display = "block";
+    menuBgContact.style.display = "block";
     if(contactContent.clientHeight >= contactScrollable.clientHeight) {
       contactScrollBar.style.display = 'block';
     };
@@ -322,7 +360,9 @@ contactHeaderButton.addEventListener('click', () => {
   if(!contactDisplayStatus){
     resetContact();
     contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
   }else {
+    menuBgContact.style.display = "none";
     contactContainer.style.display = "block";
     if(contactContent.clientHeight >= contactScrollable.clientHeight) {
       contactScrollBar.style.display = 'block';
@@ -332,142 +372,260 @@ contactHeaderButton.addEventListener('click', () => {
 
 /* WINK */
 
-let winkMousePositionX = null;
-let winkMousePositionY = null;
+let newsMousePositionX = null;
+let newsMousePositionY = null;
 
-let winkGrabScroll = false;
-let winkGrabWindow = false;
-let winkInitX = null
-let winkInitY = null
-let winkInitXScroll = null
-let winkInitYScroll = null
+let newsGrabScroll = false;
+let newsGrabWindow = false;
+let newsInitX = null
+let newsInitY = null
+let newsInitXScroll = null
+let newsInitYScroll = null
 
 
-let winkScrollable = document.getElementById('winkScrollable');
-let winkContent = document.getElementById('winkScrollableContent');
-let winkScrollBar = document.getElementById('winkScrollBar');
-let winkTheScroll = document.getElementById('winkScroll');
+let newsScrollable = document.getElementById('newsScrollable');
+let newsContent = document.getElementById('newsScrollableContent');
+let newsScrollBar = document.getElementById('newsScrollBar');
+let newsTheScroll = document.getElementById('newsScroll');
 
-winkTheScroll.addEventListener( 'mousedown', () => {
-  winkGrabScroll = true;
+newsTheScroll.addEventListener( 'mousedown', () => {
+  newsGrabScroll = true;
   selectable(document.body, false);
 })
 
 document.addEventListener( 'mouseup', () => {
-  winkGrabScroll = false;
+  newsGrabScroll = false;
   selectable(document.body, true);
 })
-let winkDeltaScroll = null;
+let newsDeltaScroll = null;
 document.addEventListener('mousemove', e => {
-  winkMousePositionY = e.clientY;
-  if (winkGrabScroll) {
-    if (winkInitY === null) {
-      winkInitY = e.clientY
+  newsMousePositionY = e.clientY;
+  if (newsGrabScroll) {
+    if (newsInitY === null) {
+      newsInitY = e.clientY
     };
-    winkDeltaScroll = ( e.clientY - winkInitY ) * 100 / (winkScrollBar.clientHeight - winkTheScroll.clientHeight);
-    if(winkDeltaScroll <= 100 && winkDeltaScroll >= 0){
-      winkScrollable.scrollTo(0, ( ( winkDeltaScroll * (winkContent.clientHeight - winkScrollable.clientHeight + margin) ) / 100));
-      winkTheScroll.style.marginTop = `${e.clientY - winkInitY}px`;
+    newsDeltaScroll = ( e.clientY - newsInitY ) * 100 / (newsScrollBar.clientHeight - newsTheScroll.clientHeight);
+    if(newsDeltaScroll <= 100 && newsDeltaScroll >= 0){
+      newsScrollable.scrollTo(0, ( ( newsDeltaScroll * (newsContent.clientHeight - newsScrollable.clientHeight + margin) ) / 100));
+      newsTheScroll.style.marginTop = `${e.clientY - newsInitY}px`;
     }
   };
 });
-winkScrollable.addEventListener('scroll', () => {
-  let winkMaxScroll = winkContent.clientHeight - winkScrollable.clientHeight + margin
-  let winkScrollPourcentage = winkScrollable.scrollTop * 100 / winkMaxScroll;
-  let winkScrollLevel = (winkScrollPourcentage * winkScrollBar.clientHeight / 100) - winkTheScroll.clientHeight;
-  if(winkScrollLevel <= ( winkScrollBar.clientHeight - winkTheScroll.clientHeight ) && winkScrollLevel >= 0){
-    winkTheScroll.style.marginTop = `${winkScrollLevel}px`;
+newsScrollable.addEventListener('scroll', () => {
+  let newsMaxScroll = newsContent.clientHeight - newsScrollable.clientHeight + margin
+  let newsScrollPourcentage = newsScrollable.scrollTop * 100 / newsMaxScroll;
+  let newsScrollLevel = (newsScrollPourcentage * newsScrollBar.clientHeight / 100) - newsTheScroll.clientHeight;
+  if(newsScrollLevel <= ( newsScrollBar.clientHeight - newsTheScroll.clientHeight ) && newsScrollLevel >= 0){
+    newsTheScroll.style.marginTop = `${newsScrollLevel}px`;
   }
 });
 
 /* LITTLE WINDOW GRAB */
 
-let winkHeader = document.getElementById('winkTitle');
-let winkContainer = document.getElementById('wink');
+let newsHeader = document.getElementById('newsTitle');
+let newsContainer = document.getElementById('news');
 
-winkHeader.addEventListener( 'mousedown', (e) => {
-  winkGrabWindow = true;
-  winkDeltaY = e.clientY;
+newsHeader.addEventListener( 'mousedown', (e) => {
+  newsGrabWindow = true;
+  newsDeltaY = e.clientY;
   selectable(document.body, false);
 })
 
 document.addEventListener( 'mouseup', () => {
-  winkGrabWindow = false;
+  newsGrabWindow = false;
   selectable(document.body, true);
 })
-let winkDeltaX = null;
-let winkDeltaY = null;
-const winkBottomWindowStart = 119;
-const winkLetftWindowStart = 260;
-let winkBottomWindow = winkBottomWindowStart;
-let winkLetftWindow = winkLetftWindowStart;
+let newsDeltaX = null;
+let newsDeltaY = null;
+const newsBottomWindowStart = 119;
+const newsLetftWindowStart = 260;
+let newsBottomWindow = newsBottomWindowStart;
+let newsLetftWindow = newsLetftWindowStart;
 
 document.addEventListener('mousemove', e => {
-  winkMousePositionX = e.clientX;
-  winkDeltaY = e.clientY;
-  if (winkGrabWindow) {
-    if (winkInitYScroll === null) {
-      winkInitXScroll = e.clientX
-      winkInitYScroll = e.clientY
+  newsMousePositionX = e.clientX;
+  newsDeltaY = e.clientY;
+  if (newsGrabWindow) {
+    if (newsInitYScroll === null) {
+      newsInitXScroll = e.clientX
+      newsInitYScroll = e.clientY
     };
-    winkDeltaX = ( e.clientX - winkInitXScroll );
-    winkDeltaY = ( e.clientY - winkInitYScroll );
-    winkBottomWindow = winkBottomWindowStart - winkDeltaY;
-    winkLetftWindow = winkLetftWindowStart + winkDeltaX;
-    winkContainer.style.left = `${winkLetftWindow}px`;
-    winkContainer.style.bottom = `${winkBottomWindow}px`;
+    newsDeltaX = ( e.clientX - newsInitXScroll );
+    newsDeltaY = ( e.clientY - newsInitYScroll );
+    newsBottomWindow = newsBottomWindowStart - newsDeltaY;
+    newsLetftWindow = newsLetftWindowStart + newsDeltaX;
+    newsContainer.style.left = `${newsLetftWindow}px`;
+    newsContainer.style.bottom = `${newsBottomWindow}px`;
   };
 });
 
 /* LITTLE WINDOW TOGGLE */
 
-let winkDisplayStatus = false;
+let newsDisplayStatus = false;
 
-const resetWink = () => {
-  winkContainer.style.left = `${winkLetftWindowStart}px`;
-  winkContainer.style.bottom = `${winkBottomWindowStart}px`;
+const resetNews = () => {
+  newsContainer.style.left = `${newsLetftWindowStart}px`;
+  newsContainer.style.bottom = `${newsBottomWindowStart}px`;
 }
 
-let winkMenuButton = document.getElementById('winkMenuButton');
-let winkHeaderButton = document.getElementById('winkCrossContainer');
+let newsMenuButton = document.getElementById('newsMenuButton');
+let newsMenuButtonMobile = document.getElementById('newsMenuButtonMobile');
+let menuBgNews = document.getElementById('menuBgNews');
+let newsHeaderButton = document.getElementById('newsCrossContainer');
 
-winkMenuButton.addEventListener('click', () => {
-  winkDisplayStatus = !winkDisplayStatus;
-  if(!winkDisplayStatus){
-    resetWink();
-    winkContainer.style.display = "none";
+newsMenuButton.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
   }else {
-    winkContainer.style.display = "block";
-    if(winkContent.clientHeight >= winkScrollable.clientHeight) {
-      winkScrollBar.style.display = 'block';
+    newsContainer.style.display = "block";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
+      menuBgNews.style.display = "none";
     };
   }
 });
-winkHeaderButton.addEventListener('click', () => {
-  winkDisplayStatus = !winkDisplayStatus;
-  if(!winkDisplayStatus){
-    resetWink();
-    winkContainer.style.display = "none";
+
+newsMenuButtonMobile.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
   }else {
-    winkContainer.style.display = "block";
-    if(winkContent.clientHeight >= winkScrollable.clientHeight) {
-      winkScrollBar.style.display = 'block';
+    newsContainer.style.display = "block";
+    menuBgNews.style.display = "block";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
+    };
+  }
+});
+newsHeaderButton.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
+  }else {
+    newsContainer.style.display = "block";
+    menuBgNews.style.display = "none";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
     };
   }
 });
 
 aboutContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 2;
-  contactContainer.style.zIndex = 1;
-  winkContainer.style.zIndex = 1;
+  aboutContainer.style.zIndex = 3;
+  contactContainer.style.zIndex = 2;
+  newsContainer.style.zIndex = 2;
 })
 contactContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 1;
+  aboutContainer.style.zIndex = 2;
+  contactContainer.style.zIndex = 3;
+  newsContainer.style.zIndex = 2;
+})
+newsContainer.addEventListener('click', () => {
+  aboutContainer.style.zIndex = 2;
   contactContainer.style.zIndex = 2;
-  winkContainer.style.zIndex = 1;
+  newsContainer.style.zIndex = 3;
 })
-winkContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 1;
-  contactContainer.style.zIndex = 1;
-  winkContainer.style.zIndex = 2;
+
+menuBgAbout.addEventListener('click', () => {
+  resetAllModals();
 })
+menuBgContact.addEventListener('click', () => {
+  resetAllModals();
+})
+menuBgNews.addEventListener('click', () => {
+  resetAllModals();
+})
+
+let mobileMenuIsDisplayed = false;
+
+let mobileMenu = document.getElementById('menu');
+let menuBg = document.getElementById('menuBg');
+let mobileMenuButton = document.getElementById('menuButton');
+let menuCross = document.getElementById('menuCrossContainer');
+
+menuBg.addEventListener('click', () => {
+  mobileMenuIsDisplayed = false;
+  mobileMenu.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  menuBg.style.display = 'none';
+  window.onscroll = () => {};
+  resetAllModals();
+})
+
+menuCross.addEventListener('click', () => {
+  mobileMenuIsDisplayed = false;
+  mobileMenu.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  menuBg.style.display = 'none';
+  window.onscroll = () => {};
+  resetAllModals();
+})
+
+mobileMenuButton.addEventListener('click', () => {
+  mobileMenuIsDisplayed = !mobileMenuIsDisplayed;
+  if(mobileMenuIsDisplayed){
+    mobileMenu.style.display = 'block';
+    menuBg.style.display = 'block';
+    let pauseX=window.scrollX;
+    let pauseY=window.scrollY;
+    window.onscroll = () => { window.scrollTo(pauseX, pauseY); };
+  }else{
+    mobileMenu.style.display = 'none';
+    menuBg.style.display = 'none';
+    window.onscroll = () => {};
+  }
+  resetAllModals();
+})
+
+const resetAllModals = () => {
+  contactMousePositionX = null;
+  contactMousePositionY = null;
+
+  contactGrabScroll = false;
+  contactGrabWindow = false;
+  contactInitX = null
+  contactInitY = null
+  contactInitXScroll = null
+  contactInitYScroll = null
+
+  newsMousePositionX = null;
+  newsMousePositionY = null;
+
+  newsGrabScroll = false;
+  newsGrabWindow = false;
+  newsInitX = null
+  newsInitY = null
+  newsInitXScroll = null
+  newsInitYScroll = null
+
+  aboutMousePositionX = null;
+  aboutMousePositionY = null;
+
+  aboutGrabScroll = false;
+  aboutGrabWindow = false;
+  aboutInitX = null
+  aboutInitY = null
+  aboutInitXScroll = null
+  aboutInitYScroll = null
+
+  newsDisplayStatus = false;
+  aboutDisplayStatus = false;
+  contactDisplayStatus = false;
+  menuBgNews.style.display = "none";
+  menuBgContact.style.display = "none";
+  menuBgAbout.style.display = "none";
+
+  contactContainer.style.display = "none";
+  resetContact();
+  aboutContainer.style.display = "none";
+  resetAbout();
+  newsContainer.style.display = "none";
+  resetNews();
+}

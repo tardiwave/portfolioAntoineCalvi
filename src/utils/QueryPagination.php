@@ -2,6 +2,9 @@
 namespace App;
 use \PDO;
 
+use App\Connection;
+use App\Table\SettingsTable;
+
 class QueryPagination {
 
     private $query;
@@ -20,13 +23,16 @@ class QueryPagination {
         string $query,
         string $queryCount,
         ?\PDO $pdo = null,
-        int $perPage = 12
+        int $perPage = 12,
     )
     {
         $this->query = $query;
         $this->queryCount = $queryCount;
         $this->pdo = $pdo ?: Connection::getPDO();
-        $this->perPage = $perPage;
+        $settingsTable = new SettingsTable($this->pdo);
+        $settings = $settingsTable->find(1);
+        $settingPerPage = $settings->getPerPage();
+        $this->perPage = $settingPerPage;
     }
 
     public function getItems(string $classMapping, array $params):array
@@ -105,11 +111,17 @@ HTML;
             }
         }
 
-        $previousHTML = "<nav aria-label='Page navigation example'><ul class='pagination'><li class='page-item {$previousStatus}'><a class='page-link' href='{$previous}'>Previous</a></li>";
+        $previousHTML = "<nav aria-label='Page navigation example'><ul class='pagination'><li class='page-item page-nav {$previousStatus}'><a class='page-link' href='{$previous}'>🡰</a></li>";
         if($previous === null){
             $pagesLink = [];
-            for ($i = 1; $i <= 3; $i++) {
-                $pagesLink[] = $i;
+            if($pages < 3){
+                for ($i = 1; $i <= $pages; $i++) {
+                    $pagesLink[] = $i;
+                }
+            }else{
+                for ($i = 1; $i <= 3; $i++) {
+                    $pagesLink[] = $i;
+                }
             }
         } elseif($next === null){
             $pagesLink = [];
@@ -141,7 +153,7 @@ HTML;
         // <li class="page-item"><a class="page-link" href="#">1</a></li>
 
 
-        $nextHTML = "<li class='page-item {$nextStatus}'><a class='page-link' href='{$next}'>Next</a></li></ul></nav>";
+        $nextHTML = "<li class='page-item page-nav {$nextStatus}'><a class='page-link' href='{$next}'>🡲</a></li></ul></nav>";
         $render = $previousHTML . $nextHTML;
         return $render;
     }

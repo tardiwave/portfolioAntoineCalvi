@@ -19,7 +19,11 @@ class Post {
 
     private $categories = [];
 
+    private $thumbnail;
+
     private $image;
+
+    private $video;
 
     private $imageExtension;
 
@@ -28,6 +32,8 @@ class Post {
     private $oldImageExtension;
 
     private $pendingUpload;
+
+    private $homePage;
 
     public function getId(): ?int
     {
@@ -123,11 +129,30 @@ class Post {
     {
         $this->categories[] = $category;
     }
+    
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnailStr($thumbnail): self
+    {
+        if(is_string($thumbnail) && !empty($thumbnail)){
+            $this->thumbnail = $thumbnail;
+        }
+        return $this;
+    }
 
     public function getImage()
     {
         return $this->image;
     }
+
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
     public function getImageArr(): array
     {
         $imageArr = explode(",", $this->image);
@@ -137,7 +162,7 @@ class Post {
             return $imageArr;
         }
     }
-    public function getImageStr(): string
+    public function getImageStr()
     {
         return $this->image;
     }
@@ -161,28 +186,6 @@ class Post {
         }
         return $images;
     }
-
-    // public function getImagesWE(string $size): ?string
-    // {
-    //     $result = $this->image . '_' . $size . '.' . $this->imageExtension;
-    //     return $result;
-    // }
-
-    // public function setImage($image): self
-    // {
-    //     if(!empty($this->image)){
-    //         $this->oldImage = $this->image;
-    //         $this->oldImageExtension = $this->imageExtension;
-    //     }
-    //     $this->pendingUpload = true;
-    //     if(is_array($image) && !empty($image['tmp_name'])){
-    //         $this->image = $image;
-    //     }
-    //     if(is_string($image) && !empty($image)){
-    //         $this->image = $image;
-    //     }
-    //     return $this;
-    // }
 
     public function setImage($image): self
     {
@@ -220,15 +223,16 @@ class Post {
         return $this->imageExtension;
     }
 
-    // public function getOldImage(): ?string
-    // {
-    //     return $this->oldImage;
-    // }
+    public function getHomePage(): ?string
+    {
+        return $this->homePage;
+    }
 
-    // public function getOldImageExtension(): ?string
-    // {
-    //     return $this->oldImageExtension;
-    // }
+    public function setHomePage($homePage): self
+    {
+        $this->homePage = $homePage;
+        return $this;
+    }
 
     public function shouldUpload(): bool
     {

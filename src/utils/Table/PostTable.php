@@ -53,4 +53,11 @@ final class PostTable extends Table{
             echo "Impossible de mettre à jour {$id} de la table {$this->table}.";
         }
     }
+    public function findHomePage ()
+    {
+        $query = $this->pdo->prepare("SELECT name, shortDescription, thumbnail, id, slug FROM posts WHERE homePage = :display");
+        $query->execute(['display' => "on"]);
+        $query->setFetchMode(PDO::FETCH_CLASS, $this->class);
+        return $query->fetchAll() ?: null;
+    }
 }

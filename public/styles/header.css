@@ -3,6 +3,9 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
+    height: 140px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
 .headerTopBar{
     height: 17px;
@@ -74,4 +77,16 @@
     display: flex;
     margin: auto;
     margin-right: 0;
+}
+
+@media (max-width: 1200px) {
+    .headerIconContainer{
+        flex-direction: column;
+    }
+    .headerButtons{
+        display: none;
+    }
+    .headerTitle{
+        margin-top: 0;
+    }
 }

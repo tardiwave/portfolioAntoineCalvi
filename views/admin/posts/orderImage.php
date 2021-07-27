@@ -4,6 +4,7 @@ use App\Connection;
 use App\Table\PostTable;
 use App\Auth;
 use App\Attachment\PostAttachment;
+$router->template = "templateAdmin";
 
 Auth::checkAuthorization($router);
 
@@ -12,18 +13,14 @@ $pdo = Connection::getPDO();
 $table = new PostTable($pdo);
 
 $post = $table->find($params['id']);
-$image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+if(strpos($params['image1'], '[Youtube]') === false){
+    $image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+}else{
+    $image = $params['image1'];
+}
 $action = $params['action'];
-echo('<br/>');
-var_dump($action);
-echo('<br/>');
-var_dump($image);
 $array = $post->getImageArr();
-echo('<br/>');
-var_dump($array);
 $index = array_search($image, $array);
-echo('<br/>');
-// var_dump($index);
 if($action === 'up' && $index > 0){
     $previous = $array[$index - 1];
     $array[$index - 1] = $image;
@@ -34,15 +31,8 @@ if($action === 'down' && $index < (count($array)-1)){
     $array[$index + 1] = $image;
     $array[$index] = $next;
 }
-var_dump($array);
-echo('<br/>');
 $newImage = implode(',', $array);
-var_dump($newImage);
-echo('<br/>');
-var_dump($post->getImageStr());
-echo('<br/>');
 $post->setAllImages($newImage);
-var_dump($post->getImageStr());
 $table->updatePost([
     'name' => $post->getName(),
     'slug' => $post->getSlug(),

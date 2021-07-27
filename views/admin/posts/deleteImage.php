@@ -12,7 +12,11 @@ $pdo = Connection::getPDO();
 $table = new PostTable($pdo);
 
 $post = $table->find($params['id']);
-$image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+if(strpos($params['image1'], '[Youtube]') === false){
+    $image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+}else{
+    $image = $params['image1'];
+}
 $post->removeImage($image);
 $table->updatePost([
     'name' => $post->getName(),
@@ -32,4 +36,8 @@ foreach( $formats as $format ){
     }
 }
 http_response_code(301);
-header('Location: ' . $router->url('adminEditPost', ['id' => e($post->getId())]) . '?deleteimage=success');
+if(strpos($params['image1'], '[Youtube]') === false){
+    header('Location: ' . $router->url('adminEditPost', ['id' => e($post->getId())]) . '?deleteimage=success');
+}else{
+    header('Location: ' . $router->url('adminEditPost', ['id' => e($post->getId())]) . '?deletevideo=success');
+}

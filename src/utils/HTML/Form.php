@@ -19,7 +19,7 @@ class Form {
 
     }
 
-    public function input(string $key, string $label): string
+    public function input(string $key, string $label, bool $required): string
     {
         $value = $this->getValue($key);
         $type = 'text';
@@ -30,13 +30,41 @@ class Form {
         if(isset($this->errors[$key])){
             $inputClass .= ' is-invalid';
         }
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
         return <<<HTML
         <div>
             <div class="mb-3">
-                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
-                <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" required>
+                <label for="field{$key}" class="form-label">{$label} {$star}</label>
+                <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" {$needed}>
                 {$this->getinvalidFeedback($key)}
             </div>
+        </div>
+HTML;
+    }
+    public function video(string $key, string $label): string
+    {
+        $value = $this->getValue($key);
+        $type = 'text';
+        $inputClass = '';
+        if(isset($this->errors[$key])){
+            $inputClass .= ' is-invalid';
+        }
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
+        return <<<HTML
+        <div class="mb-3 w-100">
+            <label for="field{$key}" class="form-label">{$label} {$star}</label>
+            <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" {$needed} placeholder="ID vidéo YouTube">
+            {$this->getinvalidFeedback($key)}
         </div>
 HTML;
     }
@@ -58,14 +86,40 @@ HTML;
 HTML;
     }
 
-    public function textarea(string $key, string $label): string
+    public function checkbox($key, string $label): string
     {
+        $checked = null;
         $value = $this->getValue($key);
+        if($value === 'on'){
+            $checked = 'checked';
+        }else{
+            $checked = '';
+        }
         return <<<HTML
         <div>
             <div class="mb-3">
-                <label for="field{$key}" class="form-label">{$label}<span title="required">*</span></label>
-                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" required>{$value}</textarea>
+                <input type="checkbox" id="scales" name="{$key}" {$checked}>
+                <label for="field{$key}" class="form-label">{$label}</label> 
+                {$this->getinvalidFeedback($key)}
+            </div>
+        </div>
+HTML;
+    }
+
+    public function textarea(string $key, string $label, bool $required): string
+    {
+        $value = $this->getValue($key);
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
+        return <<<HTML
+        <div>
+            <div class="mb-3">
+                <label for="field{$key}" class="form-label">{$label} {$star}</label>
+                <textarea type="text" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}"  {$needed}>{$value}</textarea>
                 {$this->getinvalidFeedback($key)}
             </div>
         </div>

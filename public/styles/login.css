@@ -1,0 +1,72 @@
+.loginForm{
+    border: 2px solid var(--primary);
+    border-radius: 17px;
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    width: 250px;
+}
+.loginTitle {
+    font-family: 'Monument';
+    font-weight: normal;
+    text-transform: uppercase;
+    color: var(--white);
+    font-size: 18px;
+    margin-bottom: 17px;
+}
+.loginLabel{
+    font-family: 'Helvetica';
+    font-weight: normal;
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.loginInput{
+    margin-bottom: 10px;
+    border: 2px solid var(--grey);
+    font-family: 'Helvetica';
+    font-weight: 600;
+    height: 25px;
+    border-radius: 13px;
+    color: var(--white);
+    font-size: 12px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    background-color : var(--black);
+    width: 100%;
+    max-width: calc(100% - 30px);
+    margin-top: 5px;
+}
+.loginForm div .text-danger{
+    margin-top: 10px;
+}
+.loginInput:focus {
+    outline: none;
+    border: 2px solid var(--primary);
+}
+.loginInput[type="text"] {
+    background-color : var(--black);
+}
+.loginError{
+    font-family: 'Helvetica';
+    font-weight: normal;
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    width: 200px;
+}
+.loginButton{
+    background-color: var(--primary);
+    padding: 5px 9px;
+    border: none;
+    border-radius: 13px;
+    font-family: 'Helvetica';
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: 7px;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@
     use App\Table\CategoryTable;
     use App\QueryPagination;
     use App\URL;
+    use App\Auth;
 
     $id = (int)$params['id'];
     $slug = e($params['slug']);
@@ -36,18 +37,20 @@
         }
     }
 ?>
-<h1>Categorie <?= $category->getName() ?></h1>
 
-<a href="<?= $router->url('adminEditCategory', ['id' => $category->getId()]) ?>">Modifier</a>
 
-<?php foreach($posts as $post):
-    require '../src/components/Card.php';
-endforeach; 
-?>
-<?php if(count($posts) < 1):?>
-    <p>La catégorie ne contient pas de posts.</p>
-<?php else: ?>
-<h2>Pagination</h2>
-<?php endif; ?>
-<?= $queryPagination->previousLink($link) ?>
-<?= $queryPagination->nextLink($link) ?>
+<div class="pageTitleContainer">
+    <h1 class="pageTitle">Categorie <?= $category->getName() ?></h1>
+    <span class="pageTitleLine"></span>
+    <?php  if(Auth::check()): ?>
+        <a class="postEdit" href="<?= $router->url('adminEditCategory', ['id' => $category->getId()]) ?>">Modifier</a>
+    <?php endif; ?>
+</div>
+<div class="postsGrid">
+    <?php 
+        foreach($posts as $post):
+        require '../src/components/Card.php';
+        endforeach;
+    ?>
+</div>
+<?= $queryPagination->getPagination($link) ?>

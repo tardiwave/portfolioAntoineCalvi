@@ -17,7 +17,7 @@ $category = $categoryTable->find($params['id']);
 $success = false;
 
 $errors = [];
-$fields = ['name', 'slug', 'date'];
+$fields = ['name', 'slug', 'date', 'sDesc'];
 
 if(!empty($_POST)){
     $v = new CategoryValidator($_POST, $categoryTable, $category->getId());
@@ -25,6 +25,7 @@ if(!empty($_POST)){
     if($v->validate()){
         $categoryTable->update([
             'name' => $category->getName(),
+            'shortDescription' => $category->getSDesc(),
             'slug' => $category->getSlug(),
             'createdAt' => $category->getDate()->format('Y-m-d H:i:s')
         ], $category->getId());
@@ -35,10 +36,10 @@ if(!empty($_POST)){
 }
 $form = new Form($category, $errors);
 if($success){
-    echo "La catégorie à bien été modifiée";
+    echo "<div class='alert alert-success' role='alert'>La catégorie à bien été modifiée</div>";
 }
 if(!empty($errors)){
-    echo "La catégorie n'a pas pu être modifiée";
+    echo "<div class='alert alert-danger' role='alert'>La catégorie n'a pas pu être modifiée</div>";
 }
 ?>
 

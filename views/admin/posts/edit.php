@@ -23,7 +23,7 @@ $categoryTable->hydratePost([$post]);
 $success = false;
 $errors = [];
 $noImage = false;
-$fields = ['name', 'content', 'slug', 'date'];
+$fields = ['name', 'sDesc', 'slug', 'date', 'homePage'];
 if(!empty($_POST)){
     $data = array_merge($_POST);
     $v = new PostValidator($data, $postTable, $post->getId(), $categories);
@@ -34,10 +34,12 @@ if(!empty($_POST)){
             $postTable->updatePost([
                 'name' => $post->getName(),
                 'slug' => $post->getSlug(),
-                'content' => $post->getContent(),
+                'shortDescription' => $post->getSDesc(),
                 'createdAt' => $post->getDate()->format('Y-m-d H:i:s'),
                 'image' => $post->getImageStr(),
-                'imageExtension' => $post->getImageExtension()
+                'thumbnail' => $post->getThumbnail(),
+                'imageExtension' => $post->getImageExtension(),
+                'homePage' => $post->getHomePage(),
             ], $post->getId());
             if(isset($_POST["categories_ids"])){
                 $postTable->attachCategories($post->getId(), $_POST["categories_ids"]);
@@ -51,13 +53,15 @@ if(!empty($_POST)){
 }
 $form = new Form($post, $errors);
 if ( isset($_GET['deleteimage']) && $_GET['deleteimage']==='success'){
-    echo "Suppression de l'image réussie";
+    echo "<div class='alert alert-success' role='alert'>Suppression de l'image réussie</div>";
+}elseif ( isset($_GET['deletevideo']) && $_GET['deletevideo']==='success'){
+    echo "<div class='alert alert-success' role='alert'>Suppression de la vidéo réussie</div>";
 }elseif($success && !$noImage){
-    echo "L'article à bien été actualisé";
+    echo "<div class='alert alert-success' role='alert'>L'article à bien été actualisée</div>";
 }
 
 if(!empty($errors)){
-    echo "L'article n'a pas pu être modifié";
+    echo "<div class='alert alert-danger' role='alert'>L'article n'a pas pu être modifié</div>";
 }
 ?>
 
@@ -67,6 +71,6 @@ if(!empty($errors)){
 </div>
 
 <?php 
-$button = 'Modifier Post';
+$button = 'Modifier le post';
 require('_form.php');
 ?>
