@@ -139,3 +139,26 @@
     row-gap: 34px;
     margin-top: 25px;
 }
+.postsGridHomeMobile, .noElementsMobile{
+    display: none;
+}
+@media (max-width: 1200px) {
+    .pageTitle, .pageTitleLine, .homeDesc{
+        max-width: 80vw;
+    }
+    .sliderContainer{
+        display: none;
+    }
+    .postsGridHome{
+        display: none;
+    }
+    .postsGridHomeMobile{
+        display: grid;
+    }
+    .noElements{
+        display: none;
+    }
+    .noElementsMobile{
+        display: block;
+    }
+}

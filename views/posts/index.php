@@ -6,6 +6,7 @@ $pageDescription = "L'ensemble des posts";
 use App\Connection;
 use App\URL;
 use App\Table\PostTable;
+use App\Auth;
 
 ?>
 <h1>Posts</h1>
@@ -22,7 +23,6 @@ $table = new PostTable($pdo);
 $table->findPaginated();
 
 $link = $router->url('posts');
-
 ?>
 <div class="pageTitleContainer">
     <h1 class="pageTitle">Tous mes travaux</h1>

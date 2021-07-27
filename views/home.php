@@ -59,7 +59,17 @@
 <?php else: ?>
     <h2 class="noElements">Pas de catégories à afficher</h2>
 <?php endif; ?>
-
+<?php if(count($postsToDisplay) > 0): ?>
+<div class="postsGridHome postsGridHomeMobile">
+        <?php 
+            foreach($postsToDisplay as $post):
+            require '../src/components/Card.php';
+            endforeach;
+        ?>
+    </div>
+<?php else: ?>
+    <h2 class="noElements noElementsMobile">Pas de catégories à afficher</h2>
+<?php endif; ?>
 <div class="allTips">
     <?php
         $allTips = [

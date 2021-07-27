@@ -33,8 +33,10 @@ $link = $router->url('categories');
     <?php if(count($categories) >= 1): ?>
         <?php foreach($categories as $category): ?>
             <div class="categoryCard">
-                <h2 class="categoryCardTitle"><?= $category->getName(); ?></h2>
-                <p class="categoryCardDesc"><?= $category->getSDesc() ?></p>
+                <div>
+                    <h2 class="categoryCardTitle"><?= $category->getName(); ?></h2>
+                    <p class="categoryCardDesc"><?= $category->getSDesc() ?></p>
+                </div>
                 <a class="categoryCardLink" href="<?= $router->url('category', ['slug' => $category->getSlug(), 'id' => $category->getId()]); ?>">Voir plus</a>
             </div>
         <?php endforeach; ?>

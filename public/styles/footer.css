@@ -137,7 +137,7 @@
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     display: none;
-    z-index: 1;
+    z-index: 2;
 }
 #about{
     left: 22px;
@@ -383,4 +383,119 @@
     font-size: 12px;
     margin-top: 7px;
     margin-left: 4px;
+}
+#menuButton{
+    display: none;
+}
+@media (max-width: 1200px) {
+    #menuButton{
+        display: block;
+        margin-bottom: 12px;
+        border: 2px solid var(--primary);
+    }
+    .footerRow{
+        justify-content: center;
+    }
+    .footerMenu{
+        display: none;
+    }
+    .footerChangeColorText{
+        width: 100%;
+        font-size: 14px;
+    }
+    .footerChangeColorContainer, .footerChangeColorText, .footerChangeColorRange{
+        max-width: 60vw;
+    }
+    .footerChangeColorContainer{
+        align-items: center;
+        z-index: 3;
+    }
+    .headerContainer{
+        z-index: 3;
+    }
+    .modal{
+        bottom: 50vh !important;
+        left: 50vw !important;
+        width: 80vw;
+        max-height: calc(100vh - 280px);
+        height: auto;
+        transform: translate(-50%, 50%);
+        max-width: 300px;
+    }
+    .modalContentBlock{
+        width: 80vw;
+        max-height: 100vh;
+    }
+    .modalScrollable{
+        width: calc(80vw - 28px);
+        max-width: calc(300px - 28px);;
+    }
+    .mobileMenuRowItem{
+        
+        font-family: 'Helvetica';
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--white);
+        font-size: 18px;
+        line-height: 30px;
+        padding: 0;
+        border: 2px solid var(--grey);
+        border-radius: 25px;
+        margin: auto 0;
+        white-space: nowrap;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: pointer;
+        width: 134px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+
+        border-color: var(--primary);
+        padding: 0px 20px;
+        margin-bottom: 14px;
+
+        width: -webkit-fill-available;
+        max-width: 300px;
+    }
+    .mobileMenuRowItemForm{
+        width: -webkit-fill-available;
+    }
+    #menu{
+        z-index: 1;
+    }
+    #menuBg{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: none;
+    }
+    .menuBgModal{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: none;
+    }
+    #menuInfoBlock{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+    }
+    .stop-scrolling {
+        height: 100%;
+        overflow: hidden;
+    }
 }

@@ -35,7 +35,6 @@
             <?php endif; ?>
         </div>
         <a href="<?= $router->url('home') ?>" class="headerTitle">Antoine Calvi</a>
-        <!-- <a href="<?= $router->url('login') ?>" class="headerLogin" >Connexion</a> -->
         <div class="headerButtons">
             <?php  if(Auth::check()): ?>
                 <a href="<?= $router->url('admin') ?>" class="headerLogin">admin</a>

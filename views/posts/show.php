@@ -6,6 +6,7 @@
     use App\Table\CategoryTable;
     use App\Table\SettingsTable;
     use App\Auth;
+    $router->template = "templateMain";
 
     $id = (int)$params['id'];
     $slug = e($params['slug']);
@@ -29,7 +30,6 @@
             http_response_code(301);
             header('Location: ' . $url);
         }else {
-            $router->template = "templateMain";
             $pageTitle = $post->getName();
             $pageDescription = $post->getSDesc();
         }
@@ -41,7 +41,7 @@
     <p class="postDesc"><?= $post->getSDesc() ?></p>
     <div class="postCategories">
         <?php if($postNumber < 1):?>
-            <p>Le post ne contient pas de catégories.</p>
+            <p class="postNoCategory">Le post ne contient pas de catégories.</p>
         <?php endif; ?>
         <?php foreach($post->getCategories() as $category): ?>
             <a class="postCategory" href="<?= $router->url('category', ['slug' => $category->getSlug(), 'id' => $category->getId()]) ?>"><?= $category->getName(); ?></a>
@@ -52,8 +52,9 @@
     <?php endif; ?>
 </div>
 
-<p><?= $post->getContent() ?></p>
-
 <?php foreach($post->getImageArr() as $image): ?>
     <img src="/uploads/posts/large_<?= $image ?>" class="postImage" alt="" style="margin-bottom: <?= $imageGap ?>px;">
 <?php endforeach; ?>
+<?php if(count($post->getImageArr()) < 1):?>
+    <p class="postNoContent">Le post n'a pas encore de contenu.</p>
+<?php endif; ?>

@@ -2,6 +2,7 @@
     use App\Connection;
     use App\Table\UserTable;
     use App\Table\NewsTable;
+    use App\Auth;
 
     $pdo = Connection::getPDO();
     $userTable = new UserTable($pdo);
@@ -22,6 +23,7 @@
     $description = $user->getDescription();
 ?>
 <footer class="footerContainer">
+    <div id="menuBgAbout" class="menuBgModal"></div>
     <div id="about" class="modal">
         <div class="modalHeader">
             <h2 id="aboutTitle" class="modalTitle">Informations</h2>
@@ -74,6 +76,7 @@
             </div>
         </div>
     </div>
+    <div id="menuBgContact" class="menuBgModal"></div>
     <div id="contact" class="modal">
         <div class="modalHeader">
             <h2 id="contactTitle" class="modalTitle">Contact</h2>
@@ -107,6 +110,7 @@
             </div>
         </div>
     </div>
+    <div id="menuBgNews" class="menuBgModal"></div>
     <div id="news" class="modal">
         <div class="modalHeader">
             <h2 id="newsTitle" class="modalTitle">News</h2>
@@ -118,7 +122,7 @@
         </div>
         <div id="newsInfoBlock">
             <div id="newsScrollable" class="modalScrollable">
-                <div class="newsContent">
+                <div id="newsScrollableContent" class="newsContent">
                     <?php 
                         $newsContent = $news->getContent();
                         $newsTilte = $news->getTitle();
@@ -151,6 +155,31 @@
             </div>
         </div>
     </div>
+    <div id="menuBg"></div>
+    <div id="menu" class="modal">
+        <div class="modalHeader">
+            <h2 class="modalTitle">Menu</h2>
+            <div class="modalCrossContainer" id="menuCrossContainer">
+                <svg class="modalCross" viewBox="0 0 386.667 386.667" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m386.667 45.564-45.564-45.564-147.77 147.769-147.769-147.769-45.564 45.564 147.769 147.769-147.769 147.77 45.564 45.564 147.769-147.769 147.769 147.769 45.564-45.564-147.768-147.77z"/>
+                </svg>
+            </div>
+        </div>
+        <div id="menuInfoBlock">
+            <p class="mobileMenuRowItem" id="aboutMenuButtonMobile">À propos</p>
+            <p class="mobileMenuRowItem" id="newsMenuButtonMobile">News</p>
+            <p class="mobileMenuRowItem" id="contactMenuButtonMobile">Contact</p>
+            <a href="<?= $router->url('posts'); ?>" class="mobileMenuRowItem">Tous mes travaux</a>
+            <?php  if(Auth::check()): ?>
+                <a href="<?= $router->url('admin') ?>" class="mobileMenuRowItem">admin</a>
+                <form class="mobileMenuRowItemForm" action="<?= $router->url('logout') ?>" method="POST">
+                    <button type="submit" class="mobileMenuRowItem">Se déconnecter</button>
+                </form>
+            <?php else: ?>
+                <a href="<?= $router->url('login') ?>" class="mobileMenuRowItem">Se connecter</a>
+            <?php endif; ?>
+        </div> 
+    </div>
     <div class="footerRow">
         <div class="footerMenu">
             <div class="footerMenuRow">
@@ -163,6 +192,7 @@
             </div>
         </div>
         <div class="footerChangeColorContainer" >
+            <p class="footerMenuRowItem" id="menuButton">Menu</p>
             <div class="footerChangeColorText">
                 <p>change color</p>
                 <p id="footerChangeColorTextReset">reset</p>

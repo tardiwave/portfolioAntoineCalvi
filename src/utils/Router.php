@@ -75,6 +75,9 @@ class Router {
                 $this->router->call_user_func_array($match['target'], $match['params']);
 
             }else{
+                if(session_status() === PHP_SESSION_NONE){
+                    session_start();
+                }
                 $params = $match['params'];
                 ob_start();
                 require $this->viewPath . DIRECTORY_SEPARATOR . $view . '.php';

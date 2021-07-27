@@ -52,3 +52,11 @@
     background-color: transparent;
     cursor: pointer;
 }
+.postNoCategory, .postNoContent{
+    font-family: 'Helvetica';
+    font-weight: 600;
+    color: var(--grey);
+    font-size: 14px;
+    margin-bottom: 17px;
+    text-align: center;
+}

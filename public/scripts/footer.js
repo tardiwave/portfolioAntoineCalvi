@@ -177,6 +177,8 @@ const resetAbout = () => {
 }
 
 let aboutMenuButton = document.getElementById('aboutMenuButton');
+let aboutMenuButtonMobile = document.getElementById('aboutMenuButtonMobile');
+let menuBgAbout = document.getElementById('menuBgAbout');
 let aboutHeaderButton = document.getElementById('aboutCrossContainer');
 
 aboutMenuButton.addEventListener('click', () => {
@@ -184,8 +186,24 @@ aboutMenuButton.addEventListener('click', () => {
   if(!aboutDisplayStatus){
     resetAbout();
     aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
   }else {
     aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "none";
+    if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
+      aboutScrollBar.style.display = 'block';
+    };
+  }
+});
+aboutMenuButtonMobile.addEventListener('click', () => {
+  aboutDisplayStatus = !aboutDisplayStatus;
+  if(!aboutDisplayStatus){
+    resetAbout();
+    aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
+  }else {
+    aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "block";
     if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
       aboutScrollBar.style.display = 'block';
     };
@@ -196,8 +214,10 @@ aboutHeaderButton.addEventListener('click', () => {
   if(!aboutDisplayStatus){
     resetAbout();
     aboutContainer.style.display = "none";
+    menuBgAbout.style.display = "none";
   }else {
     aboutContainer.style.display = "block";
+    menuBgAbout.style.display = "none";
     if(aboutContent.clientHeight >= aboutScrollable.clientHeight) {
       aboutScrollBar.style.display = 'block';
     };
@@ -303,6 +323,8 @@ const resetContact = () => {
 }
 
 let contactMenuButton = document.getElementById('contactMenuButton');
+let contactMenuButtonMobile = document.getElementById('contactMenuButtonMobile');
+let menuBgContact = document.getElementById('menuBgContact');
 let contactHeaderButton = document.getElementById('contactCrossContainer');
 
 contactMenuButton.addEventListener('click', () => {
@@ -310,8 +332,24 @@ contactMenuButton.addEventListener('click', () => {
   if(!contactDisplayStatus){
     resetContact();
     contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
   }else {
     contactContainer.style.display = "block";
+    menuBgContact.style.display = "none";
+    if(contactContent.clientHeight >= contactScrollable.clientHeight) {
+      contactScrollBar.style.display = 'block';
+    };
+  }
+});
+contactMenuButtonMobile.addEventListener('click', () => {
+  contactDisplayStatus = !contactDisplayStatus;
+  if(!contactDisplayStatus){
+    resetContact();
+    contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
+  }else {
+    contactContainer.style.display = "block";
+    menuBgContact.style.display = "block";
     if(contactContent.clientHeight >= contactScrollable.clientHeight) {
       contactScrollBar.style.display = 'block';
     };
@@ -322,7 +360,9 @@ contactHeaderButton.addEventListener('click', () => {
   if(!contactDisplayStatus){
     resetContact();
     contactContainer.style.display = "none";
+    menuBgContact.style.display = "none";
   }else {
+    menuBgContact.style.display = "none";
     contactContainer.style.display = "block";
     if(contactContent.clientHeight >= contactScrollable.clientHeight) {
       contactScrollBar.style.display = 'block';
@@ -429,6 +469,8 @@ const resetNews = () => {
 }
 
 let newsMenuButton = document.getElementById('newsMenuButton');
+let newsMenuButtonMobile = document.getElementById('newsMenuButtonMobile');
+let menuBgNews = document.getElementById('menuBgNews');
 let newsHeaderButton = document.getElementById('newsCrossContainer');
 
 newsMenuButton.addEventListener('click', () => {
@@ -436,8 +478,25 @@ newsMenuButton.addEventListener('click', () => {
   if(!newsDisplayStatus){
     resetNews();
     newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
   }else {
     newsContainer.style.display = "block";
+    if(newsContent.clientHeight >= newsScrollable.clientHeight) {
+      newsScrollBar.style.display = 'block';
+      menuBgNews.style.display = "none";
+    };
+  }
+});
+
+newsMenuButtonMobile.addEventListener('click', () => {
+  newsDisplayStatus = !newsDisplayStatus;
+  if(!newsDisplayStatus){
+    resetNews();
+    newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
+  }else {
+    newsContainer.style.display = "block";
+    menuBgNews.style.display = "block";
     if(newsContent.clientHeight >= newsScrollable.clientHeight) {
       newsScrollBar.style.display = 'block';
     };
@@ -448,8 +507,10 @@ newsHeaderButton.addEventListener('click', () => {
   if(!newsDisplayStatus){
     resetNews();
     newsContainer.style.display = "none";
+    menuBgNews.style.display = "none";
   }else {
     newsContainer.style.display = "block";
+    menuBgNews.style.display = "none";
     if(newsContent.clientHeight >= newsScrollable.clientHeight) {
       newsScrollBar.style.display = 'block';
     };
@@ -457,17 +518,114 @@ newsHeaderButton.addEventListener('click', () => {
 });
 
 aboutContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 2;
-  contactContainer.style.zIndex = 1;
-  newsContainer.style.zIndex = 1;
-})
-contactContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 1;
+  aboutContainer.style.zIndex = 3;
   contactContainer.style.zIndex = 2;
-  newsContainer.style.zIndex = 1;
-})
-newsContainer.addEventListener('click', () => {
-  aboutContainer.style.zIndex = 1;
-  contactContainer.style.zIndex = 1;
   newsContainer.style.zIndex = 2;
 })
+contactContainer.addEventListener('click', () => {
+  aboutContainer.style.zIndex = 2;
+  contactContainer.style.zIndex = 3;
+  newsContainer.style.zIndex = 2;
+})
+newsContainer.addEventListener('click', () => {
+  aboutContainer.style.zIndex = 2;
+  contactContainer.style.zIndex = 2;
+  newsContainer.style.zIndex = 3;
+})
+
+menuBgAbout.addEventListener('click', () => {
+  resetAllModals();
+})
+menuBgContact.addEventListener('click', () => {
+  resetAllModals();
+})
+menuBgNews.addEventListener('click', () => {
+  resetAllModals();
+})
+
+let mobileMenuIsDisplayed = false;
+
+let mobileMenu = document.getElementById('menu');
+let menuBg = document.getElementById('menuBg');
+let mobileMenuButton = document.getElementById('menuButton');
+let menuCross = document.getElementById('menuCrossContainer');
+
+menuBg.addEventListener('click', () => {
+  mobileMenuIsDisplayed = false;
+  mobileMenu.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  menuBg.style.display = 'none';
+  window.onscroll = () => {};
+  resetAllModals();
+})
+
+menuCross.addEventListener('click', () => {
+  mobileMenuIsDisplayed = false;
+  mobileMenu.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  menuBg.style.display = 'none';
+  window.onscroll = () => {};
+  resetAllModals();
+})
+
+mobileMenuButton.addEventListener('click', () => {
+  mobileMenuIsDisplayed = !mobileMenuIsDisplayed;
+  if(mobileMenuIsDisplayed){
+    mobileMenu.style.display = 'block';
+    menuBg.style.display = 'block';
+    let pauseX=window.scrollX;
+    let pauseY=window.scrollY;
+    window.onscroll = () => { window.scrollTo(pauseX, pauseY); };
+  }else{
+    mobileMenu.style.display = 'none';
+    menuBg.style.display = 'none';
+    window.onscroll = () => {};
+  }
+  resetAllModals();
+})
+
+const resetAllModals = () => {
+  contactMousePositionX = null;
+  contactMousePositionY = null;
+
+  contactGrabScroll = false;
+  contactGrabWindow = false;
+  contactInitX = null
+  contactInitY = null
+  contactInitXScroll = null
+  contactInitYScroll = null
+
+  newsMousePositionX = null;
+  newsMousePositionY = null;
+
+  newsGrabScroll = false;
+  newsGrabWindow = false;
+  newsInitX = null
+  newsInitY = null
+  newsInitXScroll = null
+  newsInitYScroll = null
+
+  aboutMousePositionX = null;
+  aboutMousePositionY = null;
+
+  aboutGrabScroll = false;
+  aboutGrabWindow = false;
+  aboutInitX = null
+  aboutInitY = null
+  aboutInitXScroll = null
+  aboutInitYScroll = null
+
+  newsDisplayStatus = false;
+  aboutDisplayStatus = false;
+  contactDisplayStatus = false;
+  menuBgNews.style.display = "none";
+  menuBgContact.style.display = "none";
+  menuBgAbout.style.display = "none";
+
+  contactContainer.style.display = "none";
+  resetContact();
+  aboutContainer.style.display = "none";
+  resetAbout();
+  newsContainer.style.display = "none";
+  resetNews();
+}

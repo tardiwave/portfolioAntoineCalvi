@@ -78,3 +78,15 @@
     margin: auto;
     margin-right: 0;
 }
+
+@media (max-width: 1200px) {
+    .headerIconContainer{
+        flex-direction: column;
+    }
+    .headerButtons{
+        display: none;
+    }
+    .headerTitle{
+        margin-top: 0;
+    }
+}
