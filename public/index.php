@@ -5,7 +5,7 @@
     use App\Router;
     require '../config/app.php';
 
-    error_reporting(0);
+    //error_reporting(0);
 
     define('UPLOAD_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'uploads');
 
