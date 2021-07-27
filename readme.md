@@ -2,18 +2,18 @@
 
 This project was bootstrapped by [Antoine Tardivel](https://www.antoinetardivel.com/).
 
-## ⚡️ Préparer l'app en local
+## ⚡️ Prepare the app locally
 
 * Execute `composer install`
 * Execute `composer dump-autoload`
 * Use bdd.sql to create tables in the database
 
-## ⚡️ Lancer l'app en local 
+## ⚡️ Start the app locally
 
 * Change the connection informations in Connection.php in /utils/
 * Execute `php -S localhost:8000 -t .\public\` in root file
 
-## 💨 Publier l'app
+## 💨 Publish the app
 
 * Change the connection informations in Connection.php in /utils/
 * remove admirer.php in /public/
