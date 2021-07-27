@@ -23,6 +23,8 @@ class Post {
 
     private $image;
 
+    private $video;
+
     private $imageExtension;
 
     private $oldImage;
@@ -145,6 +147,12 @@ class Post {
     {
         return $this->image;
     }
+
+    public function getVideo()
+    {
+        return $this->video;
+    }
+
     public function getImageArr(): array
     {
         $imageArr = explode(",", $this->image);

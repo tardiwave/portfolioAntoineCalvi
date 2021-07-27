@@ -4,6 +4,7 @@ use App\Connection;
 use App\Table\PostTable;
 use App\Auth;
 use App\Attachment\PostAttachment;
+$router->template = "templateAdmin";
 
 Auth::checkAuthorization($router);
 
@@ -12,14 +13,14 @@ $pdo = Connection::getPDO();
 $table = new PostTable($pdo);
 
 $post = $table->find($params['id']);
-$image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+if(strpos($params['image1'], '[Youtube]') === false){
+    $image = $params['image1'] . '.' . $params['image2'] . '.' . $params['ext'];
+}else{
+    $image = $params['image1'];
+}
 $action = $params['action'];
-echo('<br/>');
-echo('<br/>');
 $array = $post->getImageArr();
-echo('<br/>');
 $index = array_search($image, $array);
-echo('<br/>');
 if($action === 'up' && $index > 0){
     $previous = $array[$index - 1];
     $array[$index - 1] = $image;
@@ -31,6 +32,7 @@ if($action === 'down' && $index < (count($array)-1)){
     $array[$index] = $next;
 }
 $newImage = implode(',', $array);
+$post->setAllImages($newImage);
 $table->updatePost([
     'name' => $post->getName(),
     'slug' => $post->getSlug(),

@@ -12,7 +12,11 @@ class PostAttachment {
 
     public static function add(Post $post)
     {
+
         $directory = self::DIRECTORY;
+        if (!empty($_POST['video'])){
+            $post->setImage('[Youtube]' . $_POST['video'] . '[Youtube]');
+        }
         $image = $post->getImage();
         if (!empty($_FILES['image']['tmp_name']) && is_string($image)){
             echo '<div class="alert alert-success" role="alert">Image téléversée</div>';

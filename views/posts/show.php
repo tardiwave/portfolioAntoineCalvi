@@ -53,7 +53,13 @@
 </div>
 
 <?php foreach($post->getImageArr() as $image): ?>
-    <img src="/uploads/posts/large_<?= $image ?>" class="postImage" alt="" style="margin-bottom: <?= $imageGap ?>px;">
+    <?php if(strpos($image, '[Youtube]') === false): ?>
+        <img src="/uploads/posts/large_<?= $image ?>" class="postImage" alt="" style="margin-bottom: <?= $imageGap ?>px;">
+    <?php else: ?>
+        <iframe class="postImage postVidéo" height="675"
+            src="https://www.youtube.com/embed/<?= explode('[Youtube]', $image)[1]; ?>">
+        </iframe>
+    <?php endif; ?>
 <?php endforeach; ?>
 <?php if(count($post->getImageArr()) < 1):?>
     <p class="postNoContent">Le post n'a pas encore de contenu.</p>

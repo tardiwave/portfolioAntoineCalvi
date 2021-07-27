@@ -424,11 +424,15 @@
     }
     .modalContentBlock{
         width: 80vw;
-        max-height: 100vh;
+        max-height: calc(100vh - 310px);
     }
     .modalScrollable{
         width: calc(80vw - 28px);
-        max-width: calc(300px - 28px);;
+        max-width: calc(300px - 28px);
+
+    }
+    .modalScrollBar{
+        opacity: 0;
     }
     .mobileMenuRowItem{
         

@@ -1,6 +1,27 @@
 .postImage{
     width: 100%;
     max-width: 960px;
+    border: none;
+}
+@media (max-width: 1200px) {
+    .postVidéo{
+        height: 550px;
+    }
+}
+@media (max-width: 892px) {
+    .postVidéo{
+        height: 500px;
+    }
+}
+@media (max-width: 768px) {
+    .postVidéo{
+        height: 400px;
+    }
+}
+@media (max-width: 500px) {
+    .postVidéo{
+        height: 250px;
+    }
 }
 .postCategories{
     width: 100%;

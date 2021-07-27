@@ -26,7 +26,7 @@
     <div id="menuBgAbout" class="menuBgModal"></div>
     <div id="about" class="modal">
         <div class="modalHeader">
-            <h2 id="aboutTitle" class="modalTitle">Informations</h2>
+            <h2 id="aboutTitle" class="modalTitle">À propos</h2>
             <div class="modalCrossContainer" id="aboutCrossContainer">
                 <svg class="modalCross" viewBox="0 0 386.667 386.667" xmlns="http://www.w3.org/2000/svg">
                     <path d="m386.667 45.564-45.564-45.564-147.77 147.769-147.769-147.769-45.564 45.564 147.769 147.769-147.769 147.77 45.564 45.564 147.769-147.769 147.769 147.769 45.564-45.564-147.768-147.77z"/>

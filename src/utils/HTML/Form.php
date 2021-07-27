@@ -46,6 +46,28 @@ class Form {
         </div>
 HTML;
     }
+    public function video(string $key, string $label): string
+    {
+        $value = $this->getValue($key);
+        $type = 'text';
+        $inputClass = '';
+        if(isset($this->errors[$key])){
+            $inputClass .= ' is-invalid';
+        }
+        $star = null;
+        $needed = null;
+        if($required){
+            $star = "<span title='required'>*</span>";
+            $needed = "required";
+        }
+        return <<<HTML
+        <div class="mb-3 w-100">
+            <label for="field{$key}" class="form-label">{$label} {$star}</label>
+            <input type="{$type}" class="form-control" id="field{$key}" class="{$this->inputClass($key)}" name="{$key}" value="{$value}" {$needed} placeholder="ID vidéo YouTube">
+            {$this->getinvalidFeedback($key)}
+        </div>
+HTML;
+    }
 
     public function file(string $key, string $label): string
     {

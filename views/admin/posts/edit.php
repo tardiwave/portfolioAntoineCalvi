@@ -54,6 +54,8 @@ if(!empty($_POST)){
 $form = new Form($post, $errors);
 if ( isset($_GET['deleteimage']) && $_GET['deleteimage']==='success'){
     echo "<div class='alert alert-success' role='alert'>Suppression de l'image réussie</div>";
+}elseif ( isset($_GET['deletevideo']) && $_GET['deletevideo']==='success'){
+    echo "<div class='alert alert-success' role='alert'>Suppression de la vidéo réussie</div>";
 }elseif($success && !$noImage){
     echo "<div class='alert alert-success' role='alert'>L'article à bien été actualisée</div>";
 }

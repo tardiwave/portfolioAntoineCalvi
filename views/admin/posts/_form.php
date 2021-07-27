@@ -56,6 +56,19 @@
                     margin-left: 1em;"
             >Ajouter image</button>
         </div>
+        <h3>Ajouter vidéo YouTube</h3>
+        <div class="inline">
+            <?= $form->video('video', 'ID Vidéo YouTube (https://www.youtube.com/embed/{id})') ?>
+            <button
+                type="submit"
+                class="btn btn-primary mb-3"
+                style="
+                    height: fit-content;
+                    white-space: nowrap;
+                    margin-top: auto;
+                    margin-left: 1em;"
+            >Ajouter vidéo</button>
+        </div>
 </form>
 <?php 
     $imagesTab = $post->getImageArr();
@@ -81,19 +94,26 @@
         }
     ?>
 <div class="imagePostContainer">
+    <?php if(strpos($image, '[Youtube]') === false): ?>
     <div>
         <img src="/uploads/posts/large_<?= $image ?>" class="imagePost" alt="">
     </div>
+    <?php else: ?>
+        <iframe class="imagePost" height="340"
+            src="https://www.youtube.com/embed/<?= explode('[Youtube]', $image)[1]; ?>">
+        </iframe>
+    <?php endif; ?>
     <div class="orderButtons">
+        <?php if(strpos($image, '[Youtube]') === false): ?>
         <form method="POST" action="<?= $router->url('adminOrderPostImage', ['id' => e($post->getId()), 'image1' => $linkImage[0], 'image2' => $linkImage[1], 'ext' => $linkImage[2], 'action' => 'up']); ?>" style="display: inline;">
-                <button type="<?= $upType ?>" class="page-link m-1 <?= $up ?>" style="border-radius: .25rem;">
-                    <img src="/assets/icons/arrow-up.svg" class="imgChangeOrder" alt="">
-                </button>
+            <button type="<?= $upType ?>" class="page-link m-1 <?= $up ?>" style="border-radius: .25rem;">
+                <img src="/assets/icons/arrow-up.svg" class="imgChangeOrder" alt="">
+            </button>
         </form>
         <form method="POST" action="<?= $router->url('adminOrderPostImage', ['id' => e($post->getId()), 'image1' => $linkImage[0], 'image2' => $linkImage[1], 'ext' => $linkImage[2], 'action' => 'down']); ?>" style="display: inline;">
-                <button type="<?= $downType ?>" class="page-link m-1 btnChangeOrder <?= $down ?>" style="border-radius: .25rem;">
-                    <img src="/assets/icons/arrow-down.svg" class="imgChangeOrder" alt="">
-                </button>
+            <button type="<?= $downType ?>" class="page-link m-1 btnChangeOrder <?= $down ?>" style="border-radius: .25rem;">
+                <img src="/assets/icons/arrow-down.svg" class="imgChangeOrder" alt="">
+            </button>
         </form>
         <form method="POST" action="<?= $router->url('adminDeletePostImage', ['id' => e($post->getId()), 'image1' => $linkImage[0], 'image2' => $linkImage[1], 'ext' => $linkImage[2]]); ?>" style="display: inline;"
                 onSubmit="return confirm('Voulez-vous vraiment supprimer cette image?')">
@@ -101,6 +121,24 @@
                 X
                 </button>
         </form>
+        <?php else: ?>
+            <form method="POST" action="<?= $router->url('adminOrderPostImage', ['id' => e($post->getId()), 'image1' => $image, 'image2' => 'null', 'ext' => 'null', 'action' => 'up']); ?>" style="display: inline;">
+                <button type="<?= $upType ?>" class="page-link m-1 <?= $up ?>" style="border-radius: .25rem;">
+                    <img src="/assets/icons/arrow-up.svg" class="imgChangeOrder" alt="">
+                </button>
+            </form>
+            <form method="POST" action="<?= $router->url('adminOrderPostImage', ['id' => e($post->getId()), 'image1' => $image, 'image2' => 'null', 'ext' => 'null', 'action' => 'down']); ?>" style="display: inline;">
+                <button type="<?= $downType ?>" class="page-link m-1 btnChangeOrder <?= $down ?>" style="border-radius: .25rem;">
+                    <img src="/assets/icons/arrow-down.svg" class="imgChangeOrder" alt="">
+                </button>
+            </form>
+            <form method="POST" action="<?= $router->url('adminDeletePostImage', ['id' => e($post->getId()), 'image1' => $image, 'image2' => 'null', 'ext' => 'null']); ?>" style="display: inline;"
+                    onSubmit="return confirm('Voulez-vous vraiment supprimer cette image?')">
+                    <button type="submit" class="btn btn-danger m-1">
+                    X
+                    </button>
+            </form>
+        <?php endif; ?>
     </div>
 </div>
 <?php endforeach;?>
