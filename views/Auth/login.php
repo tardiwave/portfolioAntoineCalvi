@@ -18,6 +18,10 @@ if(!empty($_POST)){
         $pdo = Connection::getPDO();
         $table = new UserTable($pdo);
         $u = $table->findByUsername($_POST['username']);
+        $options = [
+            'cost' => 14,
+        ];
+        // $crypte = password_hash('admin', PASSWORD_BCRYPT, $options);
         if($u != null && password_verify($_POST['password'], $u->getPassword())){
             $errors = [];
             session_start();

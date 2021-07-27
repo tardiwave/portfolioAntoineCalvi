@@ -65,6 +65,11 @@
                         <ul class="dropdown-menu dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
                             <li><a class="dropdown-item" href="#">Settings</a></li>
                             <!-- <li><a class="dropdown-item" href="#">Profil</a></li> -->
+                            <li>
+                                <form action="<?= $router->url('changePWD') ?>" method="POST">
+                                    <button type="submit" class="dropdown-item">Changer mot de passe</button>
+                                </form>
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form action="<?= $router->url('logout') ?>" method="POST">
@@ -125,9 +130,19 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="<?= $router->url('adminEditSettings') ?>">Settings</a></li>
+                        <li>
+                            <form action="<?= $router->url('changePWD') ?>" method="POST">
+                                <button type="submit" class="dropdown-item">Changer mot de passe</button>
+                            </form>
+                        </li>
                         <!-- <li><a class="dropdown-item" href="#">Profil</a></li> -->
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="<?= $router->url('logout') ?>">Se déconnecter</a></li>
+                        <li>
+                            <form action="<?= $router->url('logout') ?>" method="POST">
+                                <button type="submit" class="dropdown-item">Se déconnecter</button>
+                            </form>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>

@@ -34,6 +34,7 @@
     $router->match('/admin/news/edit/', 'admin/news/edit', 'adminEditNews');
 
     $router->match('/admin/settings/edit/', 'admin/settings/edit', 'adminEditSettings');
+    $router->post('/admin/users/change-password', 'admin/users/change-pwd', 'changePWD');
 
     $router->post('/contact', 'contact/sendMail', 'sendMail');
 
