@@ -15,7 +15,7 @@ final class UserTable extends Table{
         $query = $this->pdo->prepare("SELECT * FROM " . $this->table . " WHERE username = :username");
         $query->execute(['username' => $username]);
         $query->setFetchMode(PDO::FETCH_CLASS, $this->class);
-        return $query->fetch() ?: null;
+        return $query->fetch();
     }
     
 }  

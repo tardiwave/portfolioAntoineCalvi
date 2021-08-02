@@ -28,7 +28,6 @@ class Router {
         $this->viewPath = $viewPath;
         $this->appName = $appName;
         $this->router = new \AltoRouter();
-        $this->currentPage = $currentPage;
         $this->componentsPath = $componentsPath;
         $this->layoutPath = $layoutPath;
         $this->templatesPath = $templatesPath;

@@ -19,11 +19,11 @@ class QueryPagination {
 
     private $items;
 
-    public function __construct(
+    public function __construct (
         string $query,
         string $queryCount,
         ?\PDO $pdo = null,
-        int $perPage = 12,
+        int $perPage = 12
     )
     {
         $this->query = $query;

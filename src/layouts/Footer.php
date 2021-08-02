@@ -36,7 +36,7 @@
         <div id="aboutInfoBlock" class="modalContentBlock">
             <div id="aboutScrollable" class="modalScrollable">
                 <div id="aboutScrollableContent" class="modalScrollableContent">
-                    <?php if($username || $lastname): ?>
+                    <?php if($firstname || $lastname): ?>
                     <h3 class="aboutSubTitle"><?= $firstname ?> <?= $lastname ?></h3>
                     <?php endif; ?>
                     <ul>

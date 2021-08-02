@@ -30,7 +30,7 @@ abstract class Table{
         $query = $this->pdo->prepare("SELECT * FROM " . $this->table . " WHERE id = :id");
         $query->execute(['id' => $id]);
         $query->setFetchMode(PDO::FETCH_CLASS, $this->class);
-        return $query->fetch() ?: null;
+        return $query->fetch();
     }
 
     public function exist (string $field, $value, ?int $exception = null): bool
